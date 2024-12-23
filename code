@@ -618,4 +618,9 @@ INSERT INTO item_on_sale
 SELECT product_id, product_name, unit_price, supplier, category, quantity, size
 FROM product
 where approved_status = "Approved";
- 
+
+-- To sign up, user input the phone or email as the userid, then provide password. 
+-- If it's correctly matched to signed up information, the system will get the information based on relevant the unique customer id for each customer
+-- sample for sign_up process: user provide email 'awilsteada@google.co.jp' as the user id and password 'awilstead';
+select CB.customerid, name, phone_number, email, bank_name, bank_number number from customer_account C, customer_bank_account CB
+where C.customerid = CB.customerid and email = 'kraspison1m@g.co' and password ='kraspison1m'; 
