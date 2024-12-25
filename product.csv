@@ -1,5 +1,5 @@
 product_id,product_name,category,quantity,product_size,supplier,unit_price,approved_status
-1,"Recycled Glass Jewelry Set",Accessories,3,Various,39,35.50,Approved
+(1,"Recycled Glass Jewelry Set",'Accessories',3,Various,39,35.50,'Approved'),
 2,"Macrame Wall Hanging","Home Decor",1,"3 ft",12,42.15,Pending
 3,"Hand-Forged Iron Candle Holder","Home Decor",2,Small,6,28.70,Rejected
 4,"Leather-Bound Journal",Stationery,3,Medium,23,25.30,Approved
