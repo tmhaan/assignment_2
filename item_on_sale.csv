@@ -1,0 +1,68 @@
+product_id,product_name,price,supplier,category,quantity,size
+1,"Recycled Glass Jewelry Set",35.50,"Urban Craft Co.",Accessories,3,Various
+4,"Leather-Bound Journal",25.30,"Leather Artisan",Stationery,3,Medium
+7,"Hand-Turned Wooden Pen",18.95,Woodworker,Stationery,5,Various
+10,"Rattan Furniture Set",120.00,"Rattan Weavers",Outdoors,1,"2 Chairs & Table"
+13,"Terracotta Flower Pots",20.15,Potter,"Home Decor",6,Small
+16,"Hand-Dyed Fabric",35.90,"Natural Dyes Workshop",Textiles,5,"Various Colors"
+19,"Recycled Tire Swing",60.10,"Upcycled Crafts",Outdoors,1,"Adult Size"
+22,"Dried Flower Arrangement",38.00,Florist,"Home Decor",1,Large
+25,"Hand-Embroidered Wall Art",75.15,"Embroidery Artist","Home Decor",1,"Large Floral"
+28,"Hand-Carved Wooden Chess Set",120.20,"Wood Carver",Games,1,Intricate
+31,"Rattan Chair",80.70,"Rattan Weaver",Furniture,1,Single
+34,"Terracotta Flower Pots",25.40,Potter,"Home Decor",6,Medium
+37,"Hand-Dyed Fabric",38.15,"Natural Dyes Workshop",Textiles,5,Indigo
+40,"Recycled Tire Planter",40.85,"Upcycled Crafts",Outdoors,2,Large
+43,"Dried Flower Bouquet",32.10,Florist,"Home Decor",1,Medium
+46,"Hand-Embroidered Tablecloth",150.35,"Embroidery Artist","Home Decor",1,Round
+49,"Hand-Carved Wooden Chess Pieces",85.85,"Wood Carver",Games,1,Intricate
+52,"Rattan Chair",80.00,"Rattan Weaver",Furniture,1,Single
+55,"Terracotta Flower Pots",25.00,Potter,"Home Decor",6,Medium
+58,"Hand-Dyed Fabric",38.00,"Natural Dyes Workshop",Textiles,5,Indigo
+61,"Recycled Tire Planter",40.00,"Upcycled Crafts",Outdoors,2,Large
+64,"Dried Flower Bouquet",32.00,Florist,"Home Decor",1,Medium
+67,"Hand-Embroidered Tablecloth",150.00,"Embroidery Artist","Home Decor",1,Round
+70,"Hand-Carved Wooden Chess Pieces",85.00,"Wood Carver",Games,1,Intricate
+73,"Rattan Basket",18.00,"Rattan Weaver","Home Decor",2,Small
+76,"Terracotta Plant Pots",30.00,Potter,"Home Decor",6,Large
+79,"Hand-Dyed Fabric",42.00,"Natural Dyes Workshop",Textiles,5,Tie-Dye
+82,"Recycled Tin Can Planters",12.00,"Upcycled Crafts",Outdoors,4,Small
+85,"Dried Flower Wreath",38.50,Florist,"Home Decor",1,"Front Door"
+88,"Hand-Embroidered Pillowcases",35.00,"Embroidery Artist","Home Decor",2,Silk
+91,"Hand-Carved Wooden Bowls",20.00,"Wood Carver","Home Decor",2,Small
+94,"Recycled Glass Jewelry",45.00,"Urban Craft Co.",Accessories,3,Necklaces
+97,"Leather-Bound Notebook",30.00,"Leather Artisan",Stationery,3,Small
+100,"Hand-Turned Wooden Pencils",12.00,Woodworker,Stationery,10,Assorted
+103,"Rattan Furniture Set",110.00,"Rattan Weavers",Outdoors,1,"1 Chair & Table"
+106,"Handwoven Cotton Scarf",25.50,"Artisan Village",Textile,50,"70x180 cm"
+109,"Hand-Painted Ceramic Vase",45.00,"Clay Creations",Pottery,30,"20 cm tall"
+111,"Leather-Embossed Keyring",12.50,"Leatherworks Co.",Leatherwork,50,"5x8 cm"
+113,"Crochet Baby Blanket",42.75,"Cozy Knits",Textile,10,"75x100 cm"
+115,"Hand-Woven Basket",28.00,"Basket Weavers",Basketry,20,"25x30 cm"
+117,"Hand-Embroidered Cushion Cover",35.00,"Embroidery Emporium",Textile,30,"40x40 cm"
+119,"Hand-Painted Ceramic Mug",12.00,"Clay Creations",Pottery,50,"10 oz"
+121,"Leather-Tooled Belt",45.00,"Leatherworks Co.",Leatherwork,15,"100 cm long"
+123,"Crochet Doily",10.00,"Cozy Knits",Textile,25,"20 cm diameter"
+125,"Hand-Woven Rug",175.00,"Artisan Village",Textile,5,"150x200 cm"
+127,"Hand-Embroidered Wall Art",70.00,"Embroidery Emporium",Textile,10,"40x50 cm"
+129,"Hand-Painted Ceramic Plate",28.75,"Clay Creations",Pottery,30,"20 cm diameter"
+131,"Leather-Embossed Journal Cover",52.25,"Leatherworks Co.",Leatherwork,25,"20x15 cm"
+133,"Crochet Scarf",22.50,"Cozy Knits",Textile,15,"180 cm long"
+135,"Hand-Woven Bag",45.00,"Artisan Village",Textile,30,"30x40 cm"
+137,"Hand-Embroidered Pillowcase",25.00,"Embroidery Emporium",Textile,40,"50x70 cm"
+139,"Hand-Painted Ceramic Bowl",21.25,"Clay Creations",Pottery,35,"15 cm diameter"
+141,"Leather-Tooled Bookmark",10.75,"Leatherworks Co.",Leatherwork,30,"15x5 cm"
+143,"Crochet Coasters",5.25,"Cozy Knits",Textile,20,"10 cm diameter"
+145,"Hand-Woven Table Runner",37.50,"Artisan Village",Textile,15,"40x120 cm"
+147,"Hand-Embroidered Tablecloth",120.00,"Embroidery Emporium",Textile,5,"150x250 cm"
+149,"Hand-Painted Ceramic Mug",12.50,"Clay Creations",Pottery,50,"12 oz"
+151,"Leather-Embossed Phone Case",28.95,"Leatherworks Co.",Leatherwork,40,"Fits iPhone 12"
+153,"Crochet Baby Booties",10.50,"Cozy Knits",Textile,25,"Newborn size"
+155,"Hand-Woven Tote Bag",38.50,"Artisan Village",Textile,40,"40x50 cm"
+157,"Hand-Embroidered Apron",24.99,"Embroidery Emporium",Textile,25,"One size"
+159,"Hand-Painted Ceramic Teapot",32.00,"Clay Creations",Pottery,15,"500 ml"
+161,"Leather-Tooled Wallet",45.00,"Leatherworks Co.",Leatherwork,20,"10x15 cm"
+163,"Crochet Hat",18.00,"Cozy Knits",Textile,20,"Adult size"
+165,"Hand-Woven Basket",29.95,"Basket Weavers",Basketry,25,"30x40 cm"
+167,"Hand-Embroidered Cushion Cover",32.25,"Embroidery Emporium",Textile,35,"45x45 cm"
+169,"Hand-Painted Ceramic Mug",13.25,"Clay Creations",Pottery,55,"14 oz"

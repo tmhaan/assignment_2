@@ -1,0 +1,116 @@
+customerid,bank_name,bank_number
+1,"JPMorgan Chase Bank",1234567890
+2,"Bank of America",9876543210
+3,Citibank,1357924680
+4,"Wells Fargo",2468013579
+5,HSBC,5678901234
+5,"Deutsche Bank",9012345678
+6,Barclays,3579124680
+7,"BNP Paribas",7890123456
+8,"Credit Suisse",2468013579
+8,UBS,6789012345
+9,"Bank of America",1234567890
+10,"Capital One",1357924680
+11,"U.S. Bank",1234567890
+12,"PNC Bank",9876543210
+59,"Bank of America",1234567890
+63,Citibank,1734567890
+37,"JPMorgan Chase",1122334455
+13,"Wells Fargo",6789012345
+14,Citibank,5544332211
+15,"Bank of America",9876543210
+16,"JPMorgan Chase",123456789
+17,"Wells Fargo",9876543210
+18,Citibank,1234567890
+18,"Wells Fargo",1264565890
+19,"Bank of America",5544332211
+20,"JPMorgan Chase",9876543210
+21,"Wells Fargo",1122334455
+22,Citibank,6789012345
+23,"Bank of America",1234567890
+24,"JPMorgan Chase",5544332211
+25,"Wells Fargo",9876543210
+26,Citibank,1122334455
+27,"Bank of America",6789012345
+28,"JPMorgan Chase",1234567890
+29,"Wells Fargo",5544332211
+30,Citibank,9876543210
+31,"Bank of America",1122334455
+31,"Wells Fargo",1124334425
+31,"JPMorgan Chase",1122734485
+32,"JPMorgan Chase",6789012345
+33,"Wells Fargo",1234567890
+34,Citibank,5544332211
+35,"Bank of America",9876543210
+36,"JPMorgan Chase",1122334455
+37,"Wells Fargo",6789012345
+38,"JPMorgan Chase",1234555890
+38,Citibank,1234578691
+39,"Bank of America",5544332211
+40,"JPMorgan Chase",9876543210
+41,"Wells Fargo",1122334455
+42,Citibank,6789012345
+43,"Bank of America",1234567890
+44,"JPMorgan Chase",5544332211
+45,"Wells Fargo",9876543210
+46,Citibank,1122334455
+47,"Bank of America",6789012345
+48,"MB Bank",1234567890
+49,"Wells Fargo",5544332211
+50,Citibank,9876543210
+51,"Bank of America",1122334455
+52,MSBS,6999012345
+52,Techcombank,6789000345
+52,"Bank of China",6781012343
+53,HSBC,1234567890
+54,"Bank of China Limited",5544332211
+55,"Mitsubishi UFJ Financial Group",9876543210
+56,"Morgan Stanley",1122334455
+57,UBS,6789012345
+58,"Deutsche Bank",1234567890
+59,"Agricultural Bank of China Limited",5544332211
+60,"JPMorgan Chase",9876543210
+61,"Wells Fargo",1122334455
+62,Mizuho,6789012345
+63,"Bank of America",1234567890
+63,"Toronto-Dominion Bank",1234447890
+64,"MB Bank",5544332211
+65,Sacombank,9876543210
+66,"ACB Bank",1122334455
+67,"Bank of America",6789012345
+68,"JPMorgan Chase",1234567890
+69,Momo,5544332211
+70,Citibank,9876543210
+71,"Bank of America",1122334455
+72,"JPMorgan Chase",6789012345
+73,"Wells Fargo",1234567890
+74,Citibank,5544332211
+74,"Agricultural Bank of China Limited",5244378211
+75,"Bank of America",9876543210
+76,"JPMorgan Chase",1122334455
+77,"Wells Fargo",6789012345
+78,Citibank,1234567890
+79,"MB Bank",5544332211
+80,Sacombank,9876543210
+81,"SCB Bank",1122334455
+82,"TP Bank",6789012345
+83,Vietcombank,1234567890
+84,"HD Bank",5544332211
+85,"Bank of China",9876543210
+86,"Bank of India",1122334455
+87,"HD Bank",6789012345
+88,Sacombank,1234567890
+89,Vietcombank,5544332211
+89,"Agricultural Bank of China Limited",8144752211
+90,Citibank,9876543210
+91,"Duetsche Bank",1122334455
+92,"MB Bank",6789012345
+93,Vietcombank,1234567890
+94,Citibank,5544332211
+95,"Bank of America",9876543210
+96,"JPMorgan Chase",1122334455
+97,Vietcombank,6789012345
+98,"Bank of America",1234897890
+98,"MB Bank",1233467890
+99,"HD Bank",5544332211
+100,Vietcombank,9876543210

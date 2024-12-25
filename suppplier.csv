@@ -1,0 +1,45 @@
+supplierid,name,phone,address,email,password
+1,"Artisan Village",0901234567,"123 Nguyen Trai Street, District 1, Ho Chi Minh City",artisanvillage.chusvn,artisan123
+2,"Bamboo Craftsman",0912345678,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",bamboocraftsman.chusvn,bamboo123
+3,"Basket Weavers",0923456789,"234 Pasteur Street, District 1, Ho Chi Minh City",basketweavers.chusvn,basket123
+4,"Beads & Beyond",0934567890,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",beadsbeyond.chusvn,beads123
+5,Blacksmith,0945678901,"123 Le Duan Street, District 1, Ho Chi Minh City",blacksmith.chusvn,blacksmith123
+6,"Blacksmith Workshop",0956789012,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",blacksmithworkshop.chusvn,blacksmithw123
+7,"Ceramic Artist",0967890123,"234 Pasteur Street, District 1, Ho Chi Minh City",ceramicartist.chusvn,ceramic123
+8,"Clay Creations",0978901234,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",claycreations.chusvn,clay123
+9,"Cozy Knits",0989012345,"123 Le Duan Street, District 1, Ho Chi Minh City",cozyknits.chusvn,cozy123
+10,"Embroidery Artist",0990123456,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",embroideryartist.chusvn,embroidery123
+11,"Embroidery Emporium",0901234567,"234 Pasteur Street, District 1, Ho Chi Minh City",embroideryemporium.chusvn,embro123
+12,"Etsy Seller",0912345678,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",etsyseller.chusvn,etsy123
+13,"Fair Trade Workshop",0923456789,"123 Le Duan Street, District 1, Ho Chi Minh City",fairtradeworkshop.chusvn,fairtrade123
+14,Florist,0934567890,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",florist.chusvn,florist123
+15,"Flower Presser",0945678901,"234 Pasteur Street, District 1, Ho Chi Minh City",flowerpresser.chusvn,flower123
+16,"Glass Recyclers",0956789012,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",glassrecyclers.chusvn,glassrec123
+17,"Glassworks Studio",0967890123,"123 Le Duan Street, District 1, Ho Chi Minh City",glassworksstudio.chusvn,glass123
+18,"Green Creations",0978901234,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",greencreations.chusvn,green123
+19,"Indigenous Community",0989012345,"234 Pasteur Street, District 1, Ho Chi Minh City",indigenouscommunity.chusvn,indigen123
+20,"Knitting Circle",0990123456,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",knittingcircle.chusvn,knitcircle123
+21,"Knitting Workshop",0901234567,"123 Nguyen Trai Street, District 1, Ho Chi Minh City",knittingworkshop.chusvn,knit123
+22,"Knotty Creations",0912345678,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",knottycreations.chusvn,knotty123
+23,"Leather Artisan",0923456789,"234 Pasteur Street, District 1, Ho Chi Minh City",leatherartisan.chusvn,leather123
+24,Leatherworker,0934567890,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",leatherworker.chusvn,leather456
+25,"Leatherworks Co.",0945678901,"123 Le Duan Street, District 1, Ho Chi Minh City",leatherworksco.chusvn,leather789
+26,"Macrame Artist",0956789012,"456 Cong Quynh Street, District 1, Ho Chi Minh City",macrameartist.chusvn,macrame123
+27,"Metal Craftsman",0967890123,"123 Pasteur Street, District 1, Ho Chi Minh City",metalcraftsman.chusvn,metal123
+28,"Natural Dyes Workshop",0978901234,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",naturaldyesworkshop.chusvn,natural123
+29,Potter,0989012345,"123 Le Duan Street, District 1, Ho Chi Minh City",potter.chusvn,potter123
+30,"Pottery Studio",0990123456,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",potterystudio.chusvn,pottery123
+31,"Rattan Weaver",0901234567,"234 Pasteur Street, District 1, Ho Chi Minh City",rattanweaver.chusvn,rattan123
+32,"Rattan Weavers",0912345678,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",rattanweavers.chusvn,rattan456
+33,"Rug Weaver",0923456789,"123 Le Duan Street, District 1, Ho Chi Minh City",rugweaver.chusvn,rug123
+34,"Rug Weavers",0934567890,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",rugweavers.chusvn,rug456
+35,"Silk Painter",0945678901,"234 Pasteur Street, District 1, Ho Chi Minh City",silkpainter.chusvn,silk123
+36,"Soap Maker",0956789012,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",soapmaker.chusvn,soap123
+37,"Tile Maker",0967890123,"123 Le Duan Street, District 1, Ho Chi Minh City",tilemaker.chusvn,tile123
+38,"Upcycled Crafts",0978901234,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",upcycledcrafts.chusvn,upcycle123
+39,"Urban Craft Co.",0989012345,"234 Pasteur Street, District 1, Ho Chi Minh City",urbancraftco.chusvn,urban123
+40,"Village Cooperative",0990123456,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",villagecooperative.chusvn,village123
+41,"Wood Carver",0901234567,"123 Le Duan Street, District 1, Ho Chi Minh City",woodcarver.chusvn,woodcarv123
+42,"Wood Toy Maker",0912345678,"567 Vo Van Tan Street, District 3, Ho Chi Minh City",woodtoymaker.chusvn,woodtoy123
+43,"Woodcrafters Inc.",0923456789,"234 Pasteur Street, District 1, Ho Chi Minh City",woodcraftersinc.chusvn,woodcraft123
+44,"Wooden Wonders",0934567890,"789 Tran Hung Dao Street, District 5, Ho Chi Minh City",woodenwonders.chusvn,wooden123
