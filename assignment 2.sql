@@ -5,12 +5,12 @@ DROP TABLE IF EXISTS supplier_account;
 DROP TABLE IF EXISTS supplier_bank_account;
 DROP TABLE IF EXISTS item_on_sale;
 DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS sales;
+DROP TABLE IF EXISTS  buy;
 DROP TABLE IF EXISTS rejected_item;
 DROP TABLE IF EXISTS product;
 
 CREATE TABLE customer_account (
-  customerid int(4) auto_increment,
+  customerid numeric(4) auto_increment,
   name VARCHAR(50) NOT NULL,
   phone_number varchar(30) NOT NULL, 
   email varchar(50) not null, 
@@ -20,7 +20,7 @@ CREATE TABLE customer_account (
 );
 
 CREATE TABLE customer_bank_account (
-  customerid int(4) ,
+  customerid numeric(4) ,
   bank_name VARCHAR(50) NOT NULL,
   bank_number VARCHAR(20) not null,
   --
@@ -28,13 +28,12 @@ CREATE TABLE customer_bank_account (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
     
-    select * from supplier_account
     
 Create table supplier_account (
-	supplierid int auto_increment,
+	supplierid numeric(4) auto_increment,
     name varchar(50),
     phone varchar(30),
-    address varchar(50),
+    address varchar(100),
     email varchar(50), 
     password varchar(20),
     --
@@ -50,11 +49,8 @@ create table supplier_bank_account(
     ON UPDATE CASCADE
 ); 
 
-select * from product
-Where supplier like 'Artisan%'; 
-
 create table product (
-	product_id int auto_increment, 
+	product_id numeric auto_increment, 
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
@@ -68,18 +64,20 @@ create table product (
 
 
 Create table item_on_sale(
-	product_id int,
-    primary key (product_id),
+	product_id numeric,
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
     size varchar(20),
     unit_price decimal(5,2),
     supplier varchar(40),
+    CONSTRAINT pk_product PRIMARY KEY(product_id), 
+    --
     CONSTRAINT fk_product_on_sale FOREIGN KEY (product_id) REFERENCES product(product_id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
 
 Create table rejected_item (
 	product_id int, 
@@ -105,18 +103,12 @@ Create table orders (
     ON UPDATE CASCADE
 );
 
+drop table buy; 
+
 Create table buy (
 	order_id int (4),
     product_id int (4), 
-    quantity numeric(3), 
-    --
-    CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-    --
-    CONSTRAINT fk_order_buy_which_product FOREIGN KEY (product_id) REFERENCES item_on_sale(product_id)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
+    quantity numeric(3)
 );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 insert into customer_account (name, email, phone_number, password) values 
@@ -264,116 +256,58 @@ Insert into customer_bank_account (customerid, bank_name, bank_number) values
 
 select * from product;
 
-Insert into product(product_name, category, quantity, size, supplier, unit_price, approved_status) values
-('Recycled Glass Jewelry Set', 'Accessories', 3, 'Various', 'Urban Craft Co.', 35.50, 'Approved'), 
-('Macrame Wall Hanging', 'Home Decor', 1, '3 ft', 'Etsy Seller', 42.15, 'Pending'),
-('Hand-Forged Iron Candle Holder', 'Home Decor', 2, 'Small', 'Blacksmith Workshop', 28.70, 'Rejected'),
-('Leather-Bound Journal', 'Stationery', 3, 'Medium', 'Leather Artisan', 25.30, 'Approved'),
-('Hand-Embroidered Cushion Covers', 'Home Decor', 4, '20x20"', 'Village Cooperative', 50.85, 'Pending') ,
-('Woven Basket', 'Home Decor', 1, 'Large', 'Indigenous Community', 30.20, 'Rejected') ,
-('Hand-Turned Wooden Pen', 'Stationery', 5, 'Various', 'Woodworker', 18.95, 'Approved'), 
-('Copper Tea Kettle', 'Kitchen', 1, '2 L', 'Metal Craftsman', 85.10, 'Pending') ,
-('Hand-Painted Silk Scarf', 'Accessories', 2, 'Square', 'Silk Painter', 70.45, 'Rejected'), 
-('Rattan Furniture Set', 'Outdoors', 1, '2 Chairs & Table', 'Rattan Weavers', 120.00, 'Approved') ,
-('Handmade Soap', 'Personal Care', 10, 'Various Scents', 'Soap Maker', 15.60, 'Pending'),
-('Hand-Woven Rug', 'Home Decor', 1, '8x10 ft', 'Rug Weavers', 180.50, 'Rejected') ,
-('Terracotta Flower Pots', 'Home Decor', 6, 'Small', 'Potter', 20.15, 'Approved') ,
-('Hand-Carved Wooden Mask', 'Decorative Art', 1, 'Tribal Style', 'Wood Carver', 80.70, 'Pending') ,
-('Bamboo Flute', 'Musical Instruments', 1, 'Traditional', 'Bamboo Craftsman', 45.25, 'Rejected') ,
-('Hand-Dyed Fabric', 'Textiles', 5, 'Various Colors', 'Natural Dyes Workshop', 35.90, 'Approved') ,
-('Pressed Flower Greeting Cards', 'Stationery', 10, 'Assorted', 'Flower Presser', 12.30, 'Pending'), 
-('Hand-Painted Porcelain Teacup & Saucer Set', 'Tableware', 2, 'Floral', 'Ceramic Artist', 55.65, 'Rejected') ,
-('Recycled Tire Swing', 'Outdoors', 1, 'Adult Size', 'Upcycled Crafts', 60.10, 'Approved'),
-('Hand-Knitted Baby Blanket', 'Baby', 1, 'Soft Wool', 'Knitting Circle', 40.45, 'Pending') ,
-('Hand-Painted Wooden Toys', 'Toys', 3, 'Animals', 'Wood Toy Maker', 25.70, 'Rejected') ,
-('Dried Flower Arrangement', 'Home Decor', 1, 'Large', 'Florist', 38.00, 'Approved') ,
-('Hand-Forged Iron Fire Poker', 'Fireplace', 1, 'Decorative', 'Blacksmith', 45.35, 'Pending'),
-('Leather-Crafted Belt', 'Accessories', 2, 'Hand-Tooled', 'Leatherworker', 55.60, 'Rejected'),
-('Hand-Embroidered Wall Art', 'Home Decor', 1, 'Large Floral', 'Embroidery Artist', 75.15, 'Approved'),
-('Recycled Glass Bottles', 'Decorative Art', 6, 'Various Shapes', 'Glass Recyclers', 22.80, 'Pending') ,
-('Macrame Plant Hanger', 'Home Decor', 3, 'Small', 'Macrame Artist', 28.45, 'Rejected') ,
-('Hand-Carved Wooden Chess Set', 'Games', 1, 'Intricate', 'Wood Carver', 120.20, 'Approved'), 
-('Woolen Knitted Hat', 'Accessories', 4, 'Winter', 'Knitting Workshop', 30.00, 'Pending') ,
-('Hand-Painted Ceramic Tiles', 'Home Decor', 10, 'Decorative', 'Tile Maker', 18.55, 'Rejected'), 
-('Rattan Chair', 'Furniture', 1, 'Single', 'Rattan Weaver', 80.70, 'Approved') ,
-('Handmade Soap', 'Personal Care', 10, 'Lavender', 'Soap Maker', 15.10, 'Pending'), 
-('Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 'Rug Weaver', 75.25, 'Rejected'), 
-('Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 'Potter', 25.40, 'Approved') ,
-('Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 'Wood Carver', 12.65, 'Pending') ,
-('Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 'Bamboo Craftsman', 20.30, 'Rejected') ,
-('Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 'Natural Dyes Workshop', 38.15, 'Approved'), 
-('Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 'Flower Presser', 8.20, 'Pending'), 
-('Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 'Ceramic Artist', 65.00, 'Rejected'), 
-('Recycled Tire Planter', 'Outdoors', 2, 'Large', 'Upcycled Crafts', 40.85, 'Approved'),
-('Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 'Knitting Circle', 15.50, 'Pending'), 
-('Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 'Wood Toy Maker', 28.25, 'Rejected') ,
-('Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 'Florist', 32.10, 'Approved') ,
-('Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 'Blacksmith', 90.45, 'Pending'), 
-('Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 'Leatherworker', 60.70, 'Rejected'),
-('Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 'Embroidery Artist', 150.35, 'Approved'), 
-('Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 'Glass Recyclers', 35.00, 'Pending') ,
-('Macrame Dream Catcher', 'Home Decor', 1, 'Large', 'Macrame Artist', 48.60, 'Rejected'),
-('Hand-Carved Wooden Chess Pieces', 'Games', 1, 'Intricate', 'Wood Carver', 85.85, 'Approved'), 
-('Woolen Knitted Gloves', 'Accessories', 3, 'Winter', 'Knitting Workshop', 25.20, 'Pending') ,
-('Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 'Tile Maker', 22.00, 'Rejected') ,
-('Rattan Chair', 'Furniture', 1, 'Single', 'Rattan Weaver', 80.00, 'Approved') ,
-('Handmade Soap', 'Personal Care', 10, 'Lavender', 'Soap Maker', 15.00, 'Pending'), 
-('Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 'Rug Weaver', 75.00, 'Rejected'), 
-('Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 'Potter', 25.00, 'Approved') ,
-('Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 'Wood Carver', 12.00, 'Pending') ,
-('Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 'Bamboo Craftsman', 20.00, 'Rejected') ,
-('Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 'Natural Dyes Workshop', 38.00, 'Approved'), 
-('Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 'Flower Presser', 8.00, 'Pending'), 
-('Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 'Ceramic Artist', 65.00, 'Rejected'), 
-('Recycled Tire Planter', 'Outdoors', 2, 'Large', 'Upcycled Crafts', 40.00, 'Approved') ,
-('Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 'Knitting Circle', 15.00, 'Pending'), 
-('Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 'Wood Toy Maker', 28.00, 'Rejected') ,
-('Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 'Florist', 32.00, 'Approved') ,
-('Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 'Blacksmith', 90.00, 'Pending') ,
-('Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 'Leatherworker', 60.00, 'Rejected') ,
-('Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 'Embroidery Artist', 150.00, 'Approved'), 
-('Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 'Glass Recyclers', 35.00, 'Pending') ,
-('Macrame Dream Catcher', 'Home Decor', 1, 'Large', 'Macrame Artist', 48.00, 'Rejected') ,
-('Hand-Carved Wooden Chess Pieces', 'Games', 1, 'Intricate', 'Wood Carver', 85.00, 'Approved') ,
-('Woolen Knitted Gloves', 'Accessories', 3, 'Winter', 'Knitting Workshop', 25.00, 'Pending') ,
-('Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 'Tile Maker', 22.00, 'Rejected') ,
-('Rattan Basket', 'Home Decor', 2, 'Small', 'Rattan Weaver', 18.00, 'Approved') ,
-('Handmade Soap', 'Personal Care', 10, 'Citrus', 'Soap Maker', 16.00, 'Pending') ,
-('Hand-Woven Rug', 'Home Decor', 1, '4x6 ft', 'Rug Weaver', 120.00, 'Rejected') ,
-('Terracotta Plant Pots', 'Home Decor', 6, 'Large', 'Potter', 30.00, 'Approved') ,
-('Hand-Carved Wooden Animal Figurines', 'Decorative Art', 5, 'Various', 'Wood Carver', 45.00, 'Pending'),
-('Bamboo Wind Chimes', 'Outdoors', 2, 'Hanging', 'Bamboo Craftsman', 25.00, 'Rejected') ,
-('Hand-Dyed Fabric', 'Textiles', 5, 'Tie-Dye', 'Natural Dyes Workshop', 42.00, 'Approved'), 
-('Pressed Flower Coasters', 'Home Decor', 6, 'Set of 6', 'Flower Presser', 10.00, 'Pending'), 
-('Hand-Painted Porcelain Dinnerware Set', 'Tableware', 1, '4 Place Settings', 'Ceramic Artist', 180.00, 'Rejected') ,
-('Recycled Tin Can Planters', 'Outdoors', 4, 'Small', 'Upcycled Crafts', 12.00, 'Approved') ,
-('Hand-Knitted Socks', 'Accessories', 6, 'Wool', 'Knitting Circle', 20.00, 'Pending') ,
-('Hand-Painted Wooden Puzzles', 'Games', 2, 'Jigsaw', 'Wood Toy Maker', 25.00, 'Rejected'),
-('Dried Flower Wreath', 'Home Decor', 1, 'Front Door', 'Florist', 38.50, 'Approved') ,
-('Hand-Forged Iron Garden Gates', 'Outdoors', 1, 'Small', 'Blacksmith', 150.00, 'Pending') ,
-('Leather-Crafted Journal Cover', 'Stationery', 1, 'Hand-Tooled', 'Leatherworker', 42.75, 'Rejected') ,
-('Hand-Embroidered Pillowcases', 'Home Decor', 2, 'Silk', 'Embroidery Artist', 35.00, 'Approved'),
-('Recycled Glass Vases', 'Home Decor', 3, 'Tall', 'Glass Recyclers', 28.00, 'Pending') ,
-('Macrame Wall Hanging', 'Home Decor', 1, 'Small', 'Macrame Artist', 32.50, 'Rejected') ,
-('Hand-Carved Wooden Bowls', 'Home Decor', 2, 'Small', 'Wood Carver', 20.00, 'Approved') ,
-('Woolen Knitted Scarf', 'Accessories', 5, 'Short', 'Fair Trade Workshop', 25.00, 'Pending') ,
-('Hand-Painted Ceramic Mug', 'Tableware', 6, 'Decorative', 'Pottery Studio', 15.00, 'Rejected') ,
-('Recycled Glass Jewelry', 'Accessories', 3, 'Necklaces', 'Urban Craft Co.', 45.00, 'Approved') ,
-('Macrame Plant Hanger', 'Home Decor', 3, 'Medium', 'Etsy Seller', 26.00, 'Pending') ,
-('Hand-Forged Iron Candlesticks', 'Home Decor', 2, 'Tall', 'Blacksmith Workshop', 40.00, 'Rejected') ,
-('Leather-Bound Notebook', 'Stationery', 3, 'Small', 'Leather Artisan', 30.00, 'Approved') ,
-('Hand-Embroidered Cushion Covers', 'Home Decor', 4, '18x18"', 'Village Cooperative', 55.00, 'Pending') ,
-('Woven Basket', 'Home Decor', 1, 'Medium', 'Indigenous Community', 25.00, 'Rejected') ,
-('Hand-Turned Wooden Pencils', 'Stationery', 10, 'Assorted', 'Woodworker', 12.00, 'Approved') ,
-('Copper Teapot', 'Kitchen', 1, '1L', 'Metal Craftsman', 75.00, 'Pending'),
-('Hand-Painted Silk Scarf', 'Accessories', 2, 'Long', 'Silk Painter', 68.00, 'Rejected') ,
-('Rattan Furniture Set', 'Outdoors', 1, '1 Chair & Table', 'Rattan Weavers', 110.00, 'Approved') ,
-('Handmade Soap', 'Personal Care', 10, 'Citrus', 'Soap Maker', 15.50, 'Pending') ,
-('Hand-Woven Rug', 'Home Decor', 1, '6x9 ft', 'Rug Weaver', 140.00, 'Rejected'),
-('Handwoven Cotton Scarf', 'Textile', 50, '70x180 cm', 'Artisan Village', 25.50, 'Approved'), ('Carved Wooden Bowl', 'Woodworking', 20, '15 cm diameter', 'Woodcrafters Inc.', 18.75, 'Pending'), ('Beaded Necklace', 'Jewelry', 100, 'Adjustable', 'Beads & Beyond', 32.00, 'Rejected'), ('Hand-Painted Ceramic Vase', 'Pottery', 30, '20 cm tall', 'Clay Creations', 45.00, 'Approved'), ('Macrame Wall Hanging', 'Textile', 15, '60x90 cm', 'Knotty Creations', 38.25, 'Pending'), ('Leather-Embossed Keyring', 'Leatherwork', 50, '5x8 cm', 'Leatherworks Co.', 12.50, 'Approved'), ('Hand-Painted Wooden Toy Car', 'Woodworking', 25, '15x10 cm', 'Wooden Wonders', 15.00, 'Pending'), ('Crochet Baby Blanket', 'Textile', 10, '75x100 cm', 'Cozy Knits', 42.75, 'Approved'), ('Glass Blown Bird', 'Glassblowing', 12, '10 cm tall', 'Glassworks Studio', 55.00, 'Rejected'), ('Hand-Woven Basket', 'Basketry', 20, '25x30 cm', 'Basket Weavers', 28.00, 'Approved'), ('Recycled Tire Planter', 'Upcycled', 15, '40 cm diameter', 'Green Creations', 22.50, 'Pending'), ('Hand-Embroidered Cushion Cover', 'Textile', 30, '40x40 cm', 'Embroidery Emporium', 35.00, 'Approved'), ('Wooden Chess Set', 'Woodworking', 5, '30x30 cm', 'Woodcrafters Inc.', 85.00, 'Pending'), ('Hand-Painted Ceramic Mug', 'Pottery', 50, '10 oz', 'Clay Creations', 12.00, 'Approved'), ('Macrame Plant Hanger', 'Textile', 20, '60 cm long', 'Knotty Creations', 20.75, 'Rejected'), ('Leather-Tooled Belt', 'Leatherwork', 15, '100 cm long', 'Leatherworks Co.', 45.00, 'Approved'), ('Hand-Carved Wooden Spoon', 'Woodworking', 50, '25 cm long', 'Wooden Wonders', 8.50, 'Pending'), ('Crochet Doily', 'Textile', 25, '20 cm diameter', 'Cozy Knits', 10.00, 'Approved'), ('Glass Blown Vase', 'Glassblowing', 10, '25 cm tall', 'Glassworks Studio', 60.00, 'Pending'), ('Hand-Woven Rug', 'Textile', 5, '150x200 cm', 'Artisan Village', 175.00, 'Approved'), ('Recycled Bottle Candle Holder', 'Upcycled', 20, '10 cm tall', 'Green Creations', 15.25, 'Rejected'), ('Hand-Embroidered Wall Art', 'Textile', 10, '40x50 cm', 'Embroidery Emporium', 70.00, 'Approved'), ('Wooden Jewelry Box', 'Woodworking', 15, '20x15x10 cm', 'Woodcrafters Inc.', 45.50, 'Pending'), ('Hand-Painted Ceramic Plate', 'Pottery', 30, '20 cm diameter', 'Clay Creations', 28.75, 'Approved'), ('Macrame Dream Catcher', 'Textile', 15, '30 cm diameter', 'Knotty Creations', 35.00, 'Rejected'), ('Leather-Embossed Journal Cover', 'Leatherwork', 25, '20x15 cm', 'Leatherworks Co.', 52.25, 'Approved'), ('Hand-Carved Wooden Animal Figurine', 'Woodworking', 20, '10 cm tall', 'Wooden Wonders', 18.00, 'Pending'), ('Crochet Scarf', 'Textile', 15, '180 cm long', 'Cozy Knits', 22.50, 'Approved'), ('Glass Blown Pendant', 'Glassblowing', 12, '3 cm diameter', 'Glassworks Studio', 38.75, 'Pending'), ('Hand-Woven Bag', 'Textile', 30, '30x40 cm', 'Artisan Village', 45.00, 'Approved'), ('Recycled Tin Can Planter', 'Upcycled', 25, '15 cm tall', 'Green Creations', 12.50, 'Rejected'), ('Hand-Embroidered Pillowcase', 'Textile', 40, '50x70 cm', 'Embroidery Emporium', 25.00, 'Approved'), ('Wooden Cutting Board', 'Woodworking', 20, '30x20 cm', 'Woodcrafters Inc.', 32.00, 'Pending'), ('Hand-Painted Ceramic Bowl', 'Pottery', 35, '15 cm diameter', 'Clay Creations', 21.25, 'Approved'), ('Macrame Keychain', 'Textile', 50, '10 cm long', 'Knotty Creations', 8.50, 'Rejected'), ('Leather-Tooled Bookmark', 'Leatherwork', 30, '15x5 cm', 'Leatherworks Co.', 10.75, 'Approved'), ('Hand-Carved Wooden Chess Piece', 'Woodworking', 100, '5 cm tall', 'Wooden Wonders', 7.50, 'Pending'), ('Crochet Coasters', 'Textile', 20, '10 cm diameter', 'Cozy Knits', 5.25, 'Approved'), ('Glass Blown Ornament', 'Glassblowing', 25, '5 cm diameter', 'Glassworks Studio', 15.00, 'Pending'), ('Hand-Woven Table Runner', 'Textile', 15, '40x120 cm', 'Artisan Village', 37.50, 'Approved'), ('Recycled Plastic Bottle Flower Vase', 'Upcycled', 30, '20 cm tall', 'Green Creations', 18.00, 'Rejected'), ('Hand-Embroidered Tablecloth', 'Textile', 5, '150x250 cm', 'Embroidery Emporium', 120.00, 'Approved'), ('Wooden Photo Frame', 'Woodworking', 30, '10x15 cm', 'Woodcrafters Inc.', 20.50, 'Pending'), ('Hand-Painted Ceramic Mug', 'Pottery', 50, '12 oz', 'Clay Creations', 12.50, 'Approved'), ('Macrame Wall Hanging', 'Textile', 20, '40x60 cm', 'Knotty Creations', 35.00, 'Rejected'), ('Leather-Embossed Phone Case', 'Leatherwork', 40, 'Fits iPhone 12' , 'Leatherworks Co.', 28.95, 'Approved'), ('Hand-Carved Wooden Pen', 'Woodworking', 50, '15 cm long', 'Wooden Wonders', 18.75, 'Pending'), ('Crochet Baby Booties', 'Textile', 25, 'Newborn size' , 'Cozy Knits', 10.50, 'Approved'), ('Glass Blown Paperweight', 'Glassblowing', 15, '5 cm diameter', 'Glassworks Studio', 22.00, 'Pending'), ('Hand-Woven Tote Bag', 'Textile', 40, '40x50 cm', 'Artisan Village', 38.50, 'Approved'), ('Recycled Cardboard Box Organizer', 'Upcycled', 30, '20x30x15 cm', 'Green Creations', 15.25, 'Rejected'), ('Hand-Embroidered Apron', 'Textile', 25, 'One size' , 'Embroidery Emporium', 24.99, 'Approved'), ('Wooden Puzzle', 'Woodworking', 10, '20x20 cm', 'Woodcrafters Inc.', 12.75, 'Pending'), ('Hand-Painted Ceramic Teapot', 'Pottery', 15, '500 ml', 'Clay Creations', 32.00, 'Approved'), ('Macrame Plant Hanger', 'Textile', 30, '40 cm long', 'Knotty Creations', 21.50, 'Rejected'), ('Leather-Tooled Wallet', 'Leatherwork', 20, '10x15 cm', 'Leatherworks Co.', 45.00, 'Approved'), ('Hand-Carved Wooden Birdhouse', 'Woodworking', 15, '20x15 cm', 'Wooden Wonders', 16.99, 'Pending'), ('Crochet Hat', 'Textile', 20, 'Adult size' , 'Cozy Knits', 18.00, 'Approved'), ('Glass Blown Bowl', 'Glassblowing', 10, '20 cm diameter', 'Glassworks Studio', 35.75, 'Pending'), ('Hand-Woven Basket', 'Basketry', 25, '30x40 cm', 'Basket Weavers', 29.95, 'Approved'), ('Recycled Plastic Bottle Flower Vase', 'Upcycled', 35, '25 cm tall', 'Green Creations', 14.50, 'Rejected'), ('Hand-Embroidered Cushion Cover', 'Textile', 35, '45x45 cm', 'Embroidery Emporium', 32.25, 'Approved'), ('Wooden Chess Set', 'Woodworking', 5, '35x35 cm', 'Woodcrafters Inc.', 85.00, 'Pending'), ('Hand-Painted Ceramic Mug', 'Pottery', 55, '14 oz', 'Clay Creations', 13.25, 'Approved'); 
+Insert into product(product_name, category, quantity, product_size, supplier, unit_price, approved_status) values
+('Recycled Glass Jewelry Set', 'Accessories', 3, 'Various', 39, 35.50, 'Approved'), 
+(2, 'Macrame Wall Hanging', 'Home Decor', 1, '3 ft', 12, 42.15, 'Pending'), 
+(3, 'Hand-Forged Iron Candle Holder', 'Home Decor', 2, 'Small', 6, 28.70, 'Rejected'), 
+(4, 'Leather-Bound Journal', 'Stationery', 3, 'Medium', 23, 25.30, 'Approved'), 
+(5, 'Hand-Embroidered Cushion Covers', 'Home Decor', 4, '20x20"', 40, 50.85, 'Pending'), 
+(6, 'Woven Basket', 'Home Decor', 1, 'Large', 19, 30.20, 'Rejected'), 
+(8, 'Copper Tea Kettle', 'Kitchen', 1, '2 L', 27, 85.10, 'Pending'), 
+(9, 'Hand-Painted Silk Scarf', 'Accessories', 2, 'Square', 35, 70.45, 'Rejected'), 
+(10, 'Rattan Furniture Set', 'Outdoors', 1, '2 Chairs & Table', 32, 120.00, 'Approved'), 
+(11, 'Handmade Soap', 'Personal Care', 10, 'Various Scents', 36, 15.60, 'Pending'), 
+(12, 'Hand-Woven Rug', 'Home Decor', 1, '8x10 ft', 34, 180.50, 'Rejected'), 
+(13, 'Terracotta Flower Pots', 'Home Decor', 6, 'Small', 29, 20.15, 'Approved'), 
+(14, 'Hand-Carved Wooden Mask', 'Decorative Art', 1, 'Tribal Style', 41, 80.70, 'Pending'), 
+(15, 'Bamboo Flute', 'Musical Instruments', 1, 'Traditional', 2, 45.25, 'Rejected'), 
+(16, 'Hand-Dyed Fabric', 'Textiles', 5, 'Various Colors', 28, 35.90, 'Approved'), 
+(17, 'Pressed Flower Greeting Cards', 'Stationery', 10, 'Assorted', 15, 12.30, 'Pending'), 
+(18, 'Hand-Painted Porcelain Teacup & Saucer Set', 'Tableware', 2, 'Floral', 7, 55.65, 'Rejected'), 
+(19, 'Recycled Tire Swing', 'Outdoors', 1, 'Adult Size', 38, 60.10, 'Approved'), 
+(20, 'Hand-Knitted Baby Blanket', 'Baby', 1, 'Soft Wool', 20, 40.45, 'Pending'), 
+(21, 'Hand-Painted Wooden Toys', 'Toys', 3, 'Animals', 42, 25.70, 'Rejected'), 
+(22, 'Dried Flower Arrangement', 'Home Decor', 1, 'Large', 14, 38.00, 'Approved'), 
+(23, 'Hand-Forged Iron Fire Poker', 'Fireplace', 1, 'Decorative', 5, 45.35, 'Pending'), 
+(24, 'Leather-Crafted Belt', 'Accessories', 2, 'Hand-Tooled', 24, 55.60, 'Rejected'), 
+(25, 'Hand-Embroidered Wall Art', 'Home Decor', 1, 'Large Floral', 10, 75.15, 'Approved'), 
+(26, 'Recycled Glass Bottles', 'Decorative Art', 6, 'Various Shapes', 16, 22.80, 'Pending'), 
+(27, 'Macrame Plant Hanger', 'Home Decor', 3, 'Small', 26, 28.45, 'Rejected'), 
+(28, 'Hand-Carved Wooden Chess Set', 'Games', 1, 'Intricate', 41, 120.20, 'Approved'), 
+(29, 'Woolen Knitted Hat', 'Accessories', 4, 'Winter', 21, 30.00, 'Pending'), 
+(30, 'Hand-Painted Ceramic Tiles', 'Home Decor', 10, 'Decorative', 37, 18.55, 'Rejected'), 
+(31, 'Rattan Chair', 'Furniture', 1, 'Single', 31, 80.70, 'Approved'), 
+(32, 'Handmade Soap', 'Personal Care', 10, 'Lavender', 36, 15.10, 'Pending'), 
+(33, 'Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 33, 75.25, 'Rejected'), 
+(34, 'Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 29, 25.40, 'Approved'), 
+(35, 'Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 41, 12.65, 'Pending'), 
+(36, 'Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 2, 20.30, 'Rejected'), 
+(37, 'Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 28, 38.15, 'Approved'),
+(38, 'Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 15, 8.20, 'Pending'), 
+(39, 'Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 7, 65.00, 'Rejected'), 
+(40, 'Recycled Tire Planter', 'Outdoors', 2, 'Large', 38, 40.85, 'Approved'), 
+(41, 'Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 20, 15.50, 'Pending'), 
+(42, 'Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 42, 28.25, 'Rejected'), 
+(43, 'Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 14, 32.10, 'Approved'), 
+(44, 'Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 5, 90.45, 'Pending'), 
+(45, 'Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 24, 60.70, 'Rejected'), 
+(46, 'Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 10, 150.35, 'Approved'), 
+(47, 'Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 16, 35.00, 'Pending'), 
+(48, 'Macrame Dream Catcher', 'Home Decor', 1, 'Large', 26, 48.60, 'Rejected'), 
+(49, 'Hand-Carved Wooden Chess Pieces', 'Games', 1, 'Intricate', 41, 85.85, 'Approved'), 
+(50, 'Woolen Knitted Gloves', 'Accessories', 3, 'Winter', 21, 25.20, 'Pending'), 
+(51, 'Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 37, 22.00, 'Rejected'), (52, 'Rattan Chair', 'Furniture', 1, 'Single', 31, 80.00, 'Approved'), (53, 'Handmade Soap', 'Personal Care', 10, 'Lavender', 36, 15.00, 'Pending'), (54, 'Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 33, 75.00, 'Rejected'), (55, 'Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 29, 25.00, 'Approved'), (56, 'Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 41, 12.00, 'Pending'), (57, 'Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 2, 20.00, 'Rejected'), (58, 'Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 28, 38.00, 'Approved'), (59, 'Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 15, 8.00, 'Pending'), (60, 'Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 7, 65.00, 'Rejected'), (61, 'Recycled Tire Planter', 'Outdoors', 2, 'Large', 38, 40.00, 'Approved'), (62, 'Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 20, 15.00, 'Pending'), (63, 'Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 42, 28.00, 'Rejected'), (64, 'Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 14, 32.00, 'Approved'), (65, 'Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 5, 90.00, 'Pending'), (66, 'Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 24, 60.00, 'Rejected'), (67, 'Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 10, 150.00, 'Approved'), (68, 'Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 16, 35.00, 'Pending'), (69, 'Macrame Dream Catcher', 'Home Decor', 1, 'Large', 26, 48.00, 'Rejected'),
 
-select * from product
-where approved_status = 'Approved';
 
 insert into supplier_bank_account (supplierid, bank_name, bank_number) values
 (1, 'Vietcombank', '0011223344'), (2, 'Techcombank', '0022334455'), 
@@ -426,71 +360,223 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('2024-12-22 16:30:25', 32, 'Tran Thi B', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10);
 
 insert into orders(order_datetime, customer_id, customer_name, customer_address, customer_phone, order_status, discount) values
-('2024-12-22 14:30:00', 55, 'Pham Thi E', '123 Le Duan Street, District 1, Ho Chi Minh City', '0945678901', 'Completed', 0.00),
-('2024-12-22 17:15:10', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.075), 
-('2024-12-22 15:00:10', 21, 'Nguyen Van F', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
-('2024-12-22 16:45:35', 88, 'Vo Van D', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
-('2024-12-22 13:45:00', 42, 'Nguyen Thi G', '123 Pasteur Street, District 1, Ho Chi Minh City', '0967890123', 'Completed', 0.08), 
-('2024-12-22 18:00:00', 9, 'Le Van H', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0978901234', 'Processing', 0.00), 
-('2024-12-22 14:15:15', 42, 'Nguyen Thi G', '123 Pasteur Street, District 1, Ho Chi Minh City', '0967890123', 'Completed', 0.05), 
-('2024-12-22 17:30:05', 67, 'Tran Van I', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0989012345', 'Processing', 0.02), 
-('2024-12-22 13:30:00', 9, 'Le Van H', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0978901234', 'Completed', 0.00), 
-('2024-12-22 18:15:10', 2, 'Pham Van K', '123 Le Duan Street, District 1, Ho Chi Minh City', '0990123456', 'Processing', 0.10), 
-('2024-12-22 14:00:00', 67, 'Tran Van I', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0989012345', 'Completed', 0.07), 
-('2024-12-22 17:45:05', 2, 'Pham Van K', '123 Le Duan Street, District 1, Ho Chi Minh City', '0990123456', 'Processing', 0.00), 
-('2024-12-22 13:15:00', 55, 'Pham Thi E', '123 Le Duan Street, District 1, Ho Chi Minh City', '0945678901', 'Completed', 0.03),
-('2024-12-22 18:30:00', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.05), 
-('2024-12-22 11:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
-('2024-12-22 12:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
-('2024-12-22 10:30:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.050), 
-('2024-12-22 13:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.025), 
-('2024-12-22 11:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0), 
-('2024-12-22 12:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.10), 
-('2024-12-22 10:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.08), 
-('2024-12-22 13:30:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
-('2024-12-22 11:30:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.030), 
-('2024-12-22 14:00:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.050),
-('2024-12-22 10:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.25),
-('2024-12-22 13:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0),
- ('2024-12-22 18:30:00', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.05), 
- ('2024-12-22 11:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
- ('2024-12-22 12:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 10:30:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.050), 
- ('2024-12-22 13:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.25), 
- ('2024-12-22 11:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0), 
- ('2024-12-22 12:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.10), 
- ('2024-12-22 10:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.08), 
- ('2024-12-22 13:30:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 11:30:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.030), 
- ('2024-12-22 14:00:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
- ('2024-12-22 10:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
- ('2024-12-22 13:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0),
- ('2024-12-22 18:30:00', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.05), 
- ('2024-12-22 11:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
- ('2024-12-22 12:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 10:30:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05), 
- ('2024-12-22 13:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.025), 
- ('2024-12-22 11:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0), 
- ('2024-12-22 12:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.100), 
- ('2024-12-22 10:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.08), 
- ('2024-12-22 13:30:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 11:30:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.030), 
- ('2024-12-22 14:00:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
- ('2024-12-22 10:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.25), 
- ('2024-12-22 13:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0),
- ('2024-12-22 18:30:00', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.05), 
- ('2024-12-22 11:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.07), 
- ('2024-12-22 12:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 10:30:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05), 
- ('2024-12-22 13:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.03), 
- ('2024-12-22 11:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0), 
- ('2024-12-22 12:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.100), 
- ('2024-12-22 10:45:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.080), 
- ('2024-12-22 13:30:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
- ('2024-12-22 11:30:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.030), 
- ('2024-12-22 14:00:00', 5, 'Nguyen Van G', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.050),
- ('2024-12-22 10:15:00', 38, 'Tran Thi H', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
- ('2024-12-22 13:45:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0);
+('2024-07-15 15:30:15', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-11-21 16:15:20', 2, 'Max McConnachie', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-06-08 14:45:30', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-03-12 17:00:00', 3, 'Hank Tabour', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:00:10', 4, 'Wes Haggerstone', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
+('2024-05-18 16:45:35', 5, 'Jaquenette Bowra', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-09-27 15:30:15', 6, 'Colline Gwilliam', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-01-11 16:15:20', 7, 'Kakalina Bayliss', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00),
+('2024-02-23 14:45:30', 6, 'Colline Gwilliam', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00),
+('2024-11-05 17:00:00', 8, 'Sherilyn Edds', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-08-19 15:45:45', 9, 'Theodore Jennaroy', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.00), 
+('2024-12-12 16:15:20', 10, 'Elicia Buckthought', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10), 
+('2024-03-28 14:45:30', 9, 'Theodore Jennaroy', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-07-04 17:00:00', 11, 'Hinda Vedyashkin', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-11-25 15:00:10', 12, 'Marty Radolf', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
+('2024-02-16 16:45:35', 13, 'Laurianne Lyon', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-08-09 15:30:15', 14, 'Earle Dunnet', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-01-29 16:15:20', 15, 'Le Thi C', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-03-11 14:45:30', 14, 'Earle Dunnet', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-10-20 17:00:00', 16, 'Tristan Cruddace', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-05-06 15:45:45', 17, 'Flss Brass', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.00),
+('2024-11-30 16:15:20', 18, 'Leese Cromb', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10), 
+('2024-02-14 14:45:30', 17, 'Flss Brass', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-09-08 17:00:00', 70, 'Bucky Labbet', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-04-25 15:00:10', 71, 'Michele Fellenor', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00),  
+('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03),  
+('2024-07-15 15:30:15', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-11-21 16:15:20', 2, 'Max McConnachie', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-06-08 14:45:30', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-03-12 17:00:00', 3, 'Hank Tabour', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:00:10', 4, 'Wes Haggerstone', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
+('2024-05-18 16:45:35', 5, 'Jaquenette Bowra', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-09-27 15:30:15', 6, 'Colline Gwilliam', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-01-11 16:15:20', 7, 'Kakalina Bayliss', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-02-23 14:45:30', 6, 'Colline Gwilliam', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-11-05 17:00:00', 8, 'Sherilyn Edds', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-08-19 15:45:45', 9, 'Theodore Jennaroy', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.00), 
+('2024-12-12 16:15:20', 10, 'Elicia Buckthought', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10), 
+('2024-03-28 14:45:30', 9, 'Theodore Jennaroy', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
+('2024-07-04 17:00:00', 11, 'Hinda Vedyashkin', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025),
+('2024-11-25 15:00:10', 12, 'Marty Radolf', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
+('2024-02-16 16:45:35', 13, 'Laurianne Lyon', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-08-09 15:30:15', 14, 'Earle Dunnet', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-01-29 16:15:20', 15, 'Le Thi C', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-03-11 14:45:30', 14, 'Earle Dunnet', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', '0.00'), 
+('2024-10-20 17:00:00', 16, 'Tristan Cruddace', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', '0.025'),
+('2024-05-06 15:45:45', 17, 'Flss Brass', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', '0.00'), 
+('2024-11-30 16:15:20', 18, 'Leese Cromb', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', '0.10'), 
+('2024-02-14 14:45:30', 17, 'Flss Brass', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', '0.00'), 
+('2024-09-08 17:00:00', 70, 'Bucky Labbet', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', '0.025'), 
+('2024-04-25 15:00:10', 71, 'Michele Fellenor', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', '0.00'),  
+('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', '0.03');  
+
+insert into orders(order_datetime, customer_id, customer_name, customer_address, customer_phone, order_status, discount) values 
+('2024-06-01 15:30:15', 73, 'Tallie Bainton', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-12-10 16:15:20', 74, 'Robenia Durbin', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
+('2024-12-22 14:45:30', 60, 'Boy Eaglesham', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0), 
+('2024-12-22 17:00:00', 61, 'Tymothy Yurenev', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:45:45', 62, 'Tremayne Broadberry', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0), 
+('2024-12-22 14:45:30', 60, 'Boy Eaglesham', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.0), 
+('2024-12-22 17:00:00', 61, 'Tymothy Yurenev', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:45:45', 62, 'Tremayne Broadberry', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.0), 
+('2024-07-15 15:30:15', 50, 'Rena Millier', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-11-21 16:15:20', 51, 'Kissiah Raspison', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.0), 
+('2024-06-08 14:45:30', 50, 'Rena Millier', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.0), 
+('2024-03-12 17:00:00', 52, 'Renate Hovey', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-05-25 08:30:00', 53, 'Roxie Ellington', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.075), 
+('2024-11-18 16:15:00', 54, 'Reidar Steen', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
+('2024-08-07 08:15:00', 55, 'Joline McKerron', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-07-28 16:30:00', 56, 'Raymund Charman', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-10 08:00:00', 57, 'Ulrikaumeko Howship', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.100), 
+('2024-05-11 16:45:00', 58, 'Che Picker', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0.075), 
+('2024-11-23 07:45:00', 59, 'Den Dolbey', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0), 
+('2024-06-16 17:00:00', 60, 'Boy Eaglesham', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.050), 
+('2024-08-27 07:30:00', 61, 'Tymothy Yurenev', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.025), 
+('2024-10-04 17:15:00', 62, 'Tremayne Broadberry', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0.100), 
+('2024-05-09 07:15:00', 63, 'Justinn Klain', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075),
+('2024-11-13 17:30:00', 64, 'Lita Di Franceshci', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0), 
+('2024-07-01 07:00:00', 65, 'Burt Boothebie', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.050), 
+('2024-09-26 17:45:00', 66, 'Tani McGilvra', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.025), 
+('2024-09-08 17:00:00', 70, 'Bucky Labbet', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.100), 
+('2024-04-25 15:00:10', 71, 'Michele Fellenor', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00), 
+('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-06-01 15:30:15', 73, 'Tallie Bainton', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-12-10 16:15:20', 74, 'Robenia Durbin', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-07-03 18:30:00', 75, 'Ettie Gregine', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.100), 
+('2024-09-17 06:00:00', 76, 'Ferdie Lamdin', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.075), 
+('2024-06-01 15:30:15', 73, 'Tallie Bainton', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-12-10 16:15:20', 74, 'Robenia Durbin', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
+('2024-12-22 14:45:30', 60, 'Boy Eaglesham', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0), 
+('2024-12-22 17:00:00', 61, 'Tymothy Yurenev', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:45:45', 62, 'Tremayne Broadberry', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0), 
+('2024-12-22 14:45:30', 60, 'Boy Eaglesham', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.0), 
+('2024-12-22 17:00:00', 61, 'Tymothy Yurenev', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-12-22 15:45:45', 62, 'Tremayne Broadberry', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.0), 
+('2024-07-15 15:30:15', 50, 'Rena Millier', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-11-21 16:15:20', 51, 'Kissiah Raspison', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.0), 
+('2024-06-08 14:45:30', 50, 'Rena Millier', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.0), 
+('2024-03-12 17:00:00', 52, 'Renate Hovey', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-05-25 08:30:00', 53, 'Roxie Ellington', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.075), 
+('2024-11-18 16:15:00', 54, 'Reidar Steen', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
+('2024-08-07 08:15:00', 55, 'Joline McKerron', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-07-28 16:30:00', 56, 'Raymund Charman', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-10 08:00:00', 57, 'Ulrikaumeko Howship', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.100), 
+('2024-05-11 16:45:00', 58, 'Che Picker', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0.075), 
+('2024-11-23 07:45:00', 59, 'Den Dolbey', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0), 
+('2024-06-16 17:00:00', 60, 'Boy Eaglesham', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.050), 
+('2024-08-27 07:30:00', 61, 'Tymothy Yurenev', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.025), 
+('2024-10-04 17:15:00', 62, 'Tremayne Broadberry', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0.100), 
+('2024-05-09 07:15:00', 63, 'Justinn Klain', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075), 
+('2024-11-13 17:30:00', 64, 'Lita Di Franceshci', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Processing', 0), 
+('2024-07-01 07:00:00', 65, 'Burt Boothebie', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.050), 
+('2024-09-26 17:45:00', 66, 'Tani McGilvra', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.025), 
+('2024-09-08 17:00:00', 70, 'Bucky Labbet', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.100), 
+('2024-04-25 15:00:10', 71, 'Michele Fellenor', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', 0.00),
+('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', 0.03), 
+('2024-06-01 15:30:15', 73, 'Tallie Bainton', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-12-10 16:15:20', 74, 'Robenia Durbin', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
+('2024-07-03 18:30:00', 75, 'Ettie Gregine', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.100),
+('2024-09-17 06:00:00', 76, 'Ferdie Lamdin', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.075), 
+('2024-06-13 11:30:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.03), 
+('2024-09-21 14:00:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
+('2024-05-07 10:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
+('2024-11-26 13:45:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
+('2024-08-18 10:00:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.1), 
+('2024-07-25 14:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.075), 
+('2024-10-03 09:45:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0), 
+('2024-06-20 15:00:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
+('2024-09-10 09:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
+('2024-05-01 15:15:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.10), 
+('2024-11-12 09:15:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.08), 
+('2024-08-05 15:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-07-15 09:00:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.03), 
+('2024-09-21 15:45:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
+('2024-06-08 08:45:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
+('2024-10-12 16:00:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.10), 
+('2024-05-25 08:30:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
+('2024-11-18 16:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-08-07 08:15:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.05), 
+('2024-07-28 16:30:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-10 08:00:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.10), 
+('2024-05-11 16:45:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075), 
+('2024-11-23 07:45:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.000), 
+('2024-06-16 17:00:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.050), 
+('2024-08-27 07:30:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.025), 
+('2024-10-04 17:15:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.100), 
+('2024-05-09 07:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075), 
+('2024-11-13 17:30:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.000), 
+('2024-08-07 08:15:00', 7, 'Kakalina Bayliss', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.05), 
+('2024-07-28 16:30:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-10 08:00:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.100), 
+('2024-05-11 16:45:00', 1, 'Emilia Dunsford', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075), 
+('2024-11-23 07:45:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.000), 
+('2024-06-16 17:00:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.050), 
+('2024-08-27 07:30:00', 7, 'Kakalina Bayliss', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.025), 
+('2024-10-04 17:15:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.100), 
+('2024-05-09 07:15:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075),
+('2024-11-13 17:30:00', 7, 'Kakalina Bayliss', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
+('2024-07-01 07:00:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05), 
+('2024-09-26 17:45:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.025), 
+('2024-06-20 06:45:00', 7, 'Kakalina Bayliss', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.100), 
+('2024-10-02 18:00:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.075), 
+('2024-05-14 06:30:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0),
+('2024-11-05 18:15:00', 17, 'Leese Cromb', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.05), 
+('2024-08-22 06:15:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.025), 
+('2024-07-03 18:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.1), 
+('2024-09-17 06:00:00', 17, 'Leese Cromb', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.075), 
+('2024-05-28 18:45:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0), 
+('2024-12-22 05:45:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.05), 
+('2024-12-22 19:00:00', 17, 'Leese Cromb', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.025), 
+('2024-12-22 05:30:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.1), 
+('2024-12-22 19:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.075), 
+('2024-12-22 05:15:00', 17, 'Leese Cromb', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0), 
+('2024-12-22 19:30:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.05), 
+('2024-12-22 05:00:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.025), 
+('2024-07-15 19:45:00', 30, 'Maiga Stennett', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.100), 
+('2024-09-24 04:45:00', 31, 'Katine Corness', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
+('2024-06-10 20:00:00', 32, 'Berkly Switland', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-08-28 04:30:00', 33, 'Brien Hearty', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.050), 
+('2024-11-17 20:15:00', 34, 'Winna MacRirie', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-05 04:15:00', 35, 'Devin Brighouse', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.100), 
+('2024-10-23 20:30:00', 36, 'Wilfrid Suermeier', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075),   
+('2024-05-11 04:00:00', 37, 'Lonni Semeradova', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0), 
+('2024-08-06 20:45:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.05), 
+('2024-07-29 03:45:00', 39, 'Cornell St Ledger', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.025), 
+('2024-10-02 21:00:00', 40, 'Ermanno Winning', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.10), 
+('2024-06-19 03:30:00', 30, 'Maiga Stennett', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075), 
+('2024-07-15 15:30:15', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
+('2024-11-21 16:15:20', 2, 'Max McConnachie', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
+('2024-06-08 14:45:30', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0), 
+('2024-03-12 17:00:00', 3, 'Hank Tabour', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
+('2024-05-25 08:30:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.075), 
+('2024-11-18 16:15:00', 6, 'Colline Gwilliam', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-08-07 08:15:00', 7, 'Kakalina Bayliss', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.05), 
+('2024-07-28 16:30:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.025), 
+('2024-09-10 08:00:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.1), 
+('2024-05-11 16:45:00', 1, 'Emilia Dunsford', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075), 
+('2024-11-23 07:45:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0), 
+('2024-06-16 17:00:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.05), 
+('2024-08-27 07:30:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.025), 
+('2024-10-04 17:15:00', 15, 'Tristan Cruddace', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.1), 
+('2024-05-09 07:15:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.075), 
+('2024-11-13 17:30:00', 27, 'Concordia Rodgers', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
+('2024-07-03 18:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-09-21 21:15:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
+('2024-06-08 03:15:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05), 
+('2024-10-12 21:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0.025), 
+('2024-05-25 03:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Completed', 0.1), 
+('2024-11-18 21:45:00', 5, 'Jaquenette Bowra', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Processing', 0.075), 
+('2024-08-07 02:45:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0), 
+('2024-07-28 22:00:00', 17, 'Le Van I', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.05), 
+('2024-09-10 08:00:00', 3, 'Hank Tabour', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Completed', 0.1), 
+('2024-05-11 16:45:00', 1, 'Emilia Dunsford', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075), 
+('2024-07-03 18:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
+('2024-09-21 21:15:00', 70, 'Bucky Labbet', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
+('2024-06-08 03:15:00', 71, 'Michele Fellenor', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05) 
+ select * from supplier_account
  
  insert into supplier_account(name, address, email, phone, password) values
 ('Artisan Village', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', 'artisanvillage.chusvn', '0901234567', 'artisan123'), 
@@ -536,7 +622,10 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('Wood Carver', '123 Le Duan Street, District 1, Ho Chi Minh City', 'woodcarver.chusvn', '0901234567', 'woodcarv123'), 
 ('Wood Toy Maker', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', 'woodtoymaker.chusvn', '0912345678', 'woodtoy123'),
 ('Woodcrafters Inc.', '234 Pasteur Street, District 1, Ho Chi Minh City', 'woodcraftersinc.chusvn', '0923456789', 'woodcraft123'), 
-('Wooden Wonders', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', 'woodenwonders.chusvn', '0934567890', 'wooden123'); 
+('Wooden Wonders', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', 'woodenwonders.chusvn', '0934567890', 'wooden123'),
+ insert into supplier_account(name, address, email, phone, password) values
+
+('Woodworker', '702 Nguyen Van Linh Street, District 7, Ho Chi Minh City', 'woodworker.chusvn', '0284937423', 'woodworker123') ; 
 
 Insert into rejected_item(product_id, reason) values 
 (3, "price is not suitable") ,
@@ -627,9 +716,17 @@ insert into buy(order_id, product_id, quantity) values
  (34, 43, 3), (29, 46, 2), (24, 49, 1), (39, 52, 3), (40, 55, 2), (39, 58, 1), 
  (35, 61, 3), (39, 64, 2), (57, 67, 1); 
  
+ select * from orders
+  
+insert into buy(order_id, product_id, quantity) values 
+(82, 16, 2), (83, 4, 1), (84, 7, 3), (85, 10, 2), (86, 13, 1), (87, 16, 3), (88, 19, 2), (89, 22, 1), (90, 25, 3), (91, 28, 2), (92, 31, 1), (93, 34, 3), (94, 37, 2), (95, 40, 1), (96, 43, 3), (97, 46, 2), (98, 49, 1), (99, 52, 3), (100, 55, 2), (82, 58, 1), (92, 16, 2), (93, 4, 1), (94, 7, 3), (95, 10, 2), (96, 13, 1), (97, 16, 3), (98, 19, 2), (99, 22, 1), (100, 25, 3), (92, 28, 2), (101, 31, 1), (102, 34, 3), (103, 37, 2), (104, 40, 1), (105, 43, 3), (106, 46, 2), (107, 49, 1), (108, 52, 3), (109, 55, 2), (110, 58, 1), (102, 16, 2), (103, 19, 1), (104, 22, 3), (105, 25, 2), (106, 28, 1), (107, 31, 3), (108, 34, 2), (109, 37, 1), (110, 40, 3), (111, 43, 2), (112, 46, 1), (113, 49, 3), (114, 52, 2), (115, 55, 1), (116, 58, 3), (117, 61, 2), (118, 64, 1), (119, 67, 3), (120, 70, 2), (102, 73, 1), (132, 10, 2), (133, 13, 1), (134, 16, 3), (135, 19, 2), (136, 22, 1), (137, 25, 3), (138, 28, 2), (139, 31, 1), (140, 34, 3), (141, 37, 2), (142, 40, 1), (143, 43, 3), (144, 46, 2), (145, 49, 1), (146, 52, 3), (147, 55, 2), (148, 58, 1), (149, 61, 3), (150, 64, 2), (132, 67, 1), (133, 70, 3), (134, 73, 2), (135, 76, 1), (136, 79, 3), (137, 82, 2), (138, 85, 1), (139, 88, 3), (140, 91, 2), (141, 94, 1), (142, 97, 3), (143, 100, 2), (144, 103, 1), (145, 106, 3), (146, 109, 2), (147, 111, 1), (148, 113, 3), (149, 115, 2), (150, 117, 1), (132, 119, 3), (133, 121, 2), (134, 123, 1), (135, 125, 3), (136, 127, 2), (137, 129, 1), (138, 131, 3), (139, 133, 2), (140, 135, 1), (141, 137, 3), (142, 139, 2), (143, 141, 1), (144, 143, 3), (145, 145, 2), (146, 147, 1), (147, 149, 3), (148, 151, 2), (149, 153, 1), (150, 155, 3), (152, 10, 2), (153, 13, 1), (154, 16, 3), (155, 19, 2), (156, 22, 1), (157, 25, 3), (158, 28, 2), (159, 31, 1), (160, 34, 3), (161, 37, 2), (162, 40, 1), (163, 43, 3), (164, 46, 2), (165, 49, 1), (166, 52, 3), (167, 55, 2), (168, 58, 1), (169, 61, 3), (170, 64, 2), (171, 67, 1), (172, 70, 3), (173, 73, 2), (174, 76, 1), (175, 79, 3), (176, 82, 2), (177, 85, 1), (178, 88, 3), (179, 91, 2), (180, 94, 1), (152, 97, 3), (153, 100, 2), (154, 103, 1), (155, 106, 3), (156, 109, 2), (157, 111, 1), (158, 113, 3), (159, 115, 2), (160, 117, 1), (161, 119, 3), (162, 121, 2), (163, 123, 1), (164, 125, 3), (165, 127, 2), (166, 129, 1), (167, 131, 3), (168, 133, 2), (169, 135, 1), (170, 137, 3), (171, 139, 2), (172, 141, 1), (173, 143, 3), (174, 145, 2), (175, 147, 1), (176, 149, 3), (177, 151, 2), (178, 153, 1), (179, 155, 3), (180, 157, 2), (192, 10, 2), (193, 13, 1), (194, 16, 3), (195, 19, 2), (196, 22, 1), (197, 25, 3), (198, 28, 2), (199, 31, 1), (200, 34, 3), (201, 37, 2), (202, 40, 1), (203, 43, 3), (204, 46, 2), (205, 49, 1), (206, 52, 3), (207, 55, 2), (208, 58, 1), (209, 61, 3), (210, 64, 2), (211, 67, 1), (212, 70, 3), (213, 73, 2), (214, 76, 1), (192, 79, 3), (193, 82, 2), (194, 85, 1), (195, 88, 3), (196, 91, 2), (197, 94, 1), (198, 97, 3), (199, 100, 2), (200, 103, 1), (201, 106, 3), (202, 109, 2), (203, 111, 1), (204, 113, 3), (205, 115, 2), (206, 117, 1), (207, 119, 3), (208, 121, 2), (209, 123, 1), (210, 125, 3), (211, 127, 2), (212, 129, 1), (213, 131, 3), (214, 133, 2), (192, 135, 1), (193, 137, 3), (194, 139, 2), (195, 141, 1), (196, 143, 3), (197, 145, 2), (198, 147, 1), (199, 149, 3), (200, 151, 2), (201, 153, 1), (202, 155, 3), (203, 157, 2), (204, 159, 1), (205, 161, 3), (206, 163, 2), (207, 165, 1), (208, 167, 3), (209, 169, 2), (210, 1, 1), (211, 4, 3), (212, 7, 2), (213, 10, 1), (214, 13, 3), (192, 16, 2), (193, 19, 1), (194, 22, 3), (195, 25, 2), (196, 28, 1), (197, 31, 3), (198, 34, 2), (199, 37, 1), (200, 40, 3), (201, 43, 2), (202, 46, 1), (203, 49, 3), (204, 52, 2), (205, 55, 1), (206, 58, 3), (207, 61, 2), (208, 64, 1), (209, 67, 3), (210, 70, 2), (211, 73, 1), (212, 76, 3), (213, 79, 2), (214, 82, 1), (192, 85, 3), (193, 88, 2), (194, 91, 1), (195, 94, 3), (196, 97, 2), (197, 100, 1), (198, 103, 3), (199, 106, 2), (200, 109, 1), (201, 111, 3), (202, 113, 2), (203, 115, 1), (204, 117, 3), (205, 119, 2), (206, 121, 1), (207, 123, 3), (208, 125, 2), (209, 127, 1), (210, 129, 3), (211, 131, 2), (212, 133, 1), (213, 135, 3), (214, 137, 2), (192, 139, 1), (193, 141, 3), (194, 143, 2), (195, 145, 1), (196, 147, 3), (197, 149, 2), (198, 151, 1), (199, 153, 3), (200, 155, 2), (201, 157, 1), (202, 159, 3), (203, 161, 2), (204, 163, 1), (205, 165, 3), (206, 167, 2), (207, 169, 1), (208, 1, 3), (209, 4, 2), (210, 7, 1), (211, 10, 3), (212, 13, 2), (213, 16, 1), (214, 19, 3), (192, 22, 2); 
+ 
+ select count(distinct product_id) from product
+ where approved_status = "Approved";
+ 
 -- insert the all information of the product, which have been approved, from Product main table to item_on_sale 
 INSERT INTO item_on_sale
-SELECT product_id, product_name, unit_price, supplier, category, quantity, size
+SELECT product_id, product_name, supplier, product_size, category, quantity, unit_price
 FROM product
 where approved_status = "Approved";
  
@@ -640,3 +737,16 @@ select CB.customerid, name, phone_number, email, bank_name, bank_number number f
 where C.customerid = CB.customerid and email = 'kraspison1m@g.co' and password ='kraspison1m';
 
 select * from customer_account
+select * from customer_bank_account;
+select * from buy
+order by order_id;
+select * from item_on_sale;
+select order_id, date_format(order_datetime, "%m-%d-%Y" ) as order_datetime, 
+customer_id, customer_name, customer_address, customer_phone, order_status, discount from orders;
+select * from product;
+select * from rejected_item;
+select * from supplier_account;
+select * from supplier_bank_account;
+
+select product_id, product_name, category, quantity, product_size, supplier_account.supplierid as supplier, unit_price, approved_status from product, supplier_account 
+where product.supplier = supplier_account.name
