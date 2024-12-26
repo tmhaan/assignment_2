@@ -50,7 +50,7 @@ create table supplier_bank_account(
 ); 
 
 create table product (
-	product_id numeric auto_increment, 
+	product_id numeric, 
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
@@ -254,10 +254,8 @@ Insert into customer_bank_account (customerid, bank_name, bank_number) values
 (96, 'JPMorgan Chase', 1122334455), (97, 'Vietcombank', 6789012345), (98, 'Bank of America', 1234897890),
 (98, 'MB Bank', 1233467890),(99, 'HD Bank', 5544332211),(100, 'Vietcombank', 9876543210);
 
-select * from product;
-
-Insert into product(product_name, category, quantity, product_size, supplier, unit_price, approved_status) values
-('Recycled Glass Jewelry Set', 'Accessories', 3, 'Various', 39, 35.50, 'Approved'), 
+Insert into product(product_id, product_name, category, quantity, product_size, supplier, unit_price, approved_status) values
+(1,'Recycled Glass Jewelry Set', 'Accessories', 3, 'Various', 39, 35.50, 'Approved'), 
 (2, 'Macrame Wall Hanging', 'Home Decor', 1, '3 ft', 12, 42.15, 'Pending'), 
 (3, 'Hand-Forged Iron Candle Holder', 'Home Decor', 2, 'Small', 6, 28.70, 'Rejected'), 
 (4, 'Leather-Bound Journal', 'Stationery', 3, 'Medium', 23, 25.30, 'Approved'), 
