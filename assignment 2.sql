@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS  buy;
 DROP TABLE IF EXISTS rejected_item;
 DROP TABLE IF EXISTS product;
 
+--create the table including all customer account with the customer id as the primary key, which is not null and unique.
 CREATE TABLE customer_account (
   customerid numeric(4) auto_increment,
   name VARCHAR(50) NOT NULL,
@@ -19,6 +20,9 @@ CREATE TABLE customer_account (
   CONSTRAINT pk_customer PRIMARY KEY(customerid)
 );
 
+--Create the children table of customer account, including the customer bank acccount
+--This allow user to have 1 or more bank accounts
+--No primary key, but the customer id is the foreign key. 
 CREATE TABLE customer_bank_account (
   customerid numeric(4) ,
   bank_name VARCHAR(50) NOT NULL,
@@ -28,7 +32,7 @@ CREATE TABLE customer_bank_account (
     ON DELETE CASCADE
     ON UPDATE CASCADE);
     
-    
+--create the table including all supplier account with the supplier id as the primary key, which is not null and unique.
 Create table supplier_account (
 	supplierid numeric(4) auto_increment,
     name varchar(50),
@@ -40,6 +44,9 @@ Create table supplier_account (
 	CONSTRAINT pk_supplier PRIMARY KEY(supplierid)
 );
 
+--Create the children table of supplier account, including the supplier bank account
+--This allow user to have 1 or more bank accounts
+--No primary key, but the supplier id is the foreign key. 
 create table supplier_bank_account(
 	supplierid int(4),
     bank_name varchar(20), 
@@ -49,20 +56,27 @@ create table supplier_bank_account(
     ON UPDATE CASCADE
 ); 
 
+--The product table have been created with the supplier as the foreign key, which is supplier id showing who supplied the product
+--primary key is product id
+--This is the table show the approval status: "Pending", "Approved", "Rejected"
 create table product (
 	product_id numeric, 
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
     size varchar(20), 
-    supplier varchar(50),
+    supplier numeric(4),
     unit_price DECIMAL(10,2) NOT NULL,
-    approved_status varchar(10),
+    approval_status varchar(10),
     --
-    CONSTRAINT pk_product PRIMARY KEY(product_id)
+    CONSTRAINT pk_product PRIMARY KEY(product_id),
+-- 
+CONSTRAINT fk_product_supplier FOREIGN KEY (supplier) REFERENCES supplier_account(supplierid)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
-
+--When the product is approved, it will automatically appeared to be on sale.
 Create table item_on_sale(
 	product_id numeric,
     product_name varchar(50), 
@@ -78,7 +92,7 @@ Create table item_on_sale(
     ON UPDATE CASCADE
 );
 
-
+--If the product was rejected, then it will be added in to rejected item table with the reason of rejection
 Create table rejected_item (
 	product_id int, 
     reason varchar(100),
@@ -87,6 +101,8 @@ Create table rejected_item (
     ON UPDATE CASCADE
 );
 
+--With the orders table, delivery information and order information is included. 
+--the primary key is order_id, and the customer_id will be foreign key referenced by customer account table 
 Create table orders (
 	order_id int auto_increment,
     order_datetime datetime,
@@ -103,12 +119,19 @@ Create table orders (
     ON UPDATE CASCADE
 );
 
-drop table buy; 
-
+--Be the children table of order table, the buy table is include which product that each orders included. 
 Create table buy (
 	order_id int (4),
     product_id int (4), 
-    quantity numeric(3)
+    quantity numeric(3),
+--
+CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    --
+    CONSTRAINT fk_order_buy_which_product FOREIGN KEY (product_id) REFERENCES item_on_sale(product_id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
 insert into customer_account (name, email, phone_number, password) values 
