@@ -327,9 +327,125 @@ Insert into product(product_id, product_name, category, quantity, product_size, 
 (48, 'Macrame Dream Catcher', 'Home Decor', 1, 'Large', 26, 48.60, 'Rejected'), 
 (49, 'Hand-Carved Wooden Chess Pieces', 'Games', 1, 'Intricate', 41, 85.85, 'Approved'), 
 (50, 'Woolen Knitted Gloves', 'Accessories', 3, 'Winter', 21, 25.20, 'Pending'), 
-(51, 'Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 37, 22.00, 'Rejected'), (52, 'Rattan Chair', 'Furniture', 1, 'Single', 31, 80.00, 'Approved'), (53, 'Handmade Soap', 'Personal Care', 10, 'Lavender', 36, 15.00, 'Pending'), (54, 'Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 33, 75.00, 'Rejected'), (55, 'Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 29, 25.00, 'Approved'), (56, 'Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 41, 12.00, 'Pending'), (57, 'Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 2, 20.00, 'Rejected'), (58, 'Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 28, 38.00, 'Approved'), (59, 'Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 15, 8.00, 'Pending'), (60, 'Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 7, 65.00, 'Rejected'), (61, 'Recycled Tire Planter', 'Outdoors', 2, 'Large', 38, 40.00, 'Approved'), (62, 'Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 20, 15.00, 'Pending'), (63, 'Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 42, 28.00, 'Rejected'), (64, 'Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 14, 32.00, 'Approved'), (65, 'Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 5, 90.00, 'Pending'), (66, 'Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 24, 60.00, 'Rejected'), (67, 'Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 10, 150.00, 'Approved'), (68, 'Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 16, 35.00, 'Pending'), (69, 'Macrame Dream Catcher', 'Home Decor', 1, 'Large', 26, 48.00, 'Rejected'),
-
-
+(51, 'Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 37, 22.00, 'Rejected'), 
+(52, 'Rattan Chair', 'Furniture', 1, 'Single', 31, 80.00, 'Approved'), 
+(53, 'Handmade Soap', 'Personal Care', 10, 'Lavender', 36, 15.00, 'Pending'), 
+(54, 'Hand-Woven Rug Runner', 'Home Decor', 1, 'Hallway Size', 33, 75.00, 'Rejected'), 
+(55, 'Terracotta Flower Pots', 'Home Decor', 6, 'Medium', 29, 25.00, 'Approved'), 
+(56, 'Hand-Carved Wooden Spoon', 'Kitchen', 5, 'Various Sizes', 41, 12.00, 'Pending'), 
+(57, 'Bamboo Bird Feeder', 'Outdoors', 1, 'Hanging', 2, 20.00, 'Rejected'), 
+(58, 'Hand-Dyed Fabric', 'Textiles', 5, 'Indigo', 28, 38.00, 'Approved'), 
+(59, 'Pressed Flower Bookmarks', 'Stationery', 15, 'Assorted', 15, 8.00, 'Pending'), 
+(60, 'Hand-Painted Porcelain Teapot', 'Tableware', 1, 'Floral', 7, 65.00, 'Rejected'), 
+(61, 'Recycled Tire Planter', 'Outdoors', 2, 'Large', 38, 40.00, 'Approved'), 
+(62, 'Hand-Knitted Baby Booties', 'Baby', 5, 'Soft Yarn', 20, 15.00, 'Pending'), 
+(63, 'Hand-Painted Wooden Toys', 'Toys', 3, 'Cars', 42, 28.00, 'Rejected'),
+(64, 'Dried Flower Bouquet', 'Home Decor', 1, 'Medium', 14, 32.00, 'Approved'), 
+(65, 'Hand-Forged Iron Fireplace Tools', 'Fireplace', 1, 'Set of 3', 5, 90.00, 'Pending'), 
+(66, 'Leather-Crafted Wallet', 'Accessories', 1, 'Hand-Tooled', 24, 60.00, 'Rejected'),
+(67, 'Hand-Embroidered Tablecloth', 'Home Decor', 1, 'Round', 10, 150.00, 'Approved'), 
+(68, 'Recycled Glass Bowls', 'Home Decor', 4, 'Various Sizes', 16, 35.00, 'Pending'), 
+(69, 'Macrame Dream Catcher', 'Home Decor', 1, 'Large', 26, 48.00, 'Rejected'),
+(70, 'Hand-Carved Wooden Chess Pieces', 'Games', 1, 'Intricate', 41, 85.00, 'Approved'), 
+(71, 'Woolen Knitted Gloves', 'Accessories', 3, 'Winter', 21, 25.00, 'Pending'), 
+(72, 'Hand-Painted Ceramic Wall Plaques', 'Home Decor', 3, 'Decorative', 37, 22.00, 'Rejected'), 
+(73, 'Rattan Basket', 'Home Decor', 2, 'Small', 31, 18.00, 'Approved'), 
+(74, 'Handmade Soap', 'Personal Care', 10, 'Citrus', 36, 16.00, 'Pending'), 
+(75, 'Hand-Woven Rug', 'Home Decor', 1, '4x6 ft', 33, 120.00, 'Rejected'), 
+(76, 'Terracotta Plant Pots', 'Home Decor', 6, 'Large', 29, 30.00, 'Approved'), 
+(77, 'Hand-Carved Wooden Animal Figurines', 'Decorative Art', 5, 'Various', 41, 45.00, 'Pending'), 
+(78, 'Bamboo Wind Chimes', 'Outdoors', 2, 'Hanging', 2, 25.00, 'Rejected'), 
+(79, 'Hand-Dyed Fabric', 'Textiles', 5, 'Tie-Dye', 28, 42.00, 'Approved'), 
+(80, 'Pressed Flower Coasters', 'Home Decor', 6, 'Set of 6', 15, 10.00, 'Pending'),
+(81, 'Hand-Painted Porcelain Dinnerware Set', 'Tableware', 1, '4 Place Settings', 7, 180.00, 'Rejected'), 
+(82, 'Recycled Tin Can Planters', 'Outdoors', 4, 'Small', 38, 12.00, 'Approved'), 
+(83, 'Hand-Knitted Socks', 'Accessories', 6, 'Wool', 20, 20.00, 'Pending'), 
+(84, 'Hand-Painted Wooden Puzzles', 'Games', 2, 'Jigsaw', 42, 25.00, 'Rejected'), 
+(85, 'Dried Flower Wreath', 'Home Decor', 1, 'Front Door', 14, 38.50, 'Approved'), 
+(86, 'Hand-Forged Iron Garden Gates', 'Outdoors', 1, 'Small', 5, 150.00, 'Pending'), 
+(87, 'Leather-Crafted Journal Cover', 'Stationery', 1, 'Hand-Tooled', 24, 42.75, 'Rejected'), 
+(88, 'Hand-Embroidered Pillowcases', 'Home Decor', 2, 'Silk', 10, 35.00, 'Approved'), 
+(89, 'Recycled Glass Vases', 'Home Decor', 3, 'Tall', 16, 28.00, 'Pending'), 
+(90, 'Macrame Wall Hanging', 'Home Decor', 1, 'Small', 26, 32.50, 'Rejected'), 
+(91, 'Hand-Carved Wooden Bowls', 'Home Decor', 2, 'Small', 41, 20.00, 'Approved'), 
+(92, 'Woolen Knitted Scarf', 'Accessories', 5, 'Short', 13, 25.00, 'Pending'), 
+(93, 'Hand-Painted Ceramic Mug', 'Tableware', 6, 'Decorative', 30, 15.00, 'Rejected'), 
+(94, 'Recycled Glass Jewelry', 'Accessories', 3, 'Necklaces', 39, 45.00, 'Approved'), 
+(95, 'Macrame Plant Hanger', 'Home Decor', 3, 'Medium', 12, 26.00, 'Pending'), 
+(96, 'Hand-Forged Iron Candlesticks', 'Home Decor', 2, 'Tall', 6, 40.00, 'Rejected'), 
+(97, 'Leather-Bound Notebook', 'Stationery', 3, 'Small', 23, 30.00, 'Approved'), 
+(98, 'Hand-Embroidered Cushion Covers', 'Home Decor', 4, '18x18"', 40, 55.00, 'Pending'), 
+(99, 'Woven Basket', 'Home Decor', 1, 'Medium', 19, 25.00, 'Rejected'),
+(101, 'Copper Teapot', 'Kitchen', 1, '1L', 27, 75.00, 'Pending'), 
+(102, 'Hand-Painted Silk Scarf', 'Accessories', 2, 'Long', 35, 68.00, 'Rejected'), 
+(103, 'Rattan Furniture Set', 'Outdoors', 1, '1 Chair & Table', 32, 110.00, 'Approved'), 
+(104, 'Handmade Soap', 'Personal Care', 10, 'Citrus', 36, 15.50, 'Pending'), 
+(105, 'Hand-Woven Rug', 'Home Decor', 1, '6x9 ft', 33, 140.00, 'Rejected'), 
+(106, 'Handwoven Cotton Scarf', 'Textile', 50, '70x180 cm', 1, 25.50, 'Approved'), 
+(107, 'Carved Wooden Bowl', 'Woodworking', 20, '15 cm diameter', 43, 18.75, 'Pending'), 
+(108, 'Beaded Necklace', 'Jewelry', 100, 'Adjustable', 4, 32.00, 'Rejected'), 
+(109, 'Hand-Painted Ceramic Vase', 'Pottery', 30, '20 cm tall', 8, 45.00, 'Approved'), 
+(110, 'Macrame Wall Hanging', 'Textile', 15, '60x90 cm', 22, 38.25, 'Pending'), 
+(111, 'Leather-Embossed Keyring', 'Leatherwork', 50, '5x8 cm', 25, 12.50, 'Approved'), 
+(112, 'Hand-Painted Wooden Toy Car', 'Woodworking', 25, '15x10 cm', 44, 15.00, 'Pending'), 
+(113, 'Crochet Baby Blanket', 'Textile', 10, '75x100 cm', 9, 42.75, 'Approved'), 
+(114, 'Glass Blown Bird', 'Glassblowing', 12, '10 cm tall', 17, 55.00, 'Rejected'), 
+(115, 'Hand-Woven Basket', 'Basketry', 20, '25x30 cm', 3, 28.00, 'Approved'),
+(116, 'Recycled Tire Planter', 'Upcycled', 15, '40 cm diameter', 18, 22.50, 'Pending'), 
+(117, 'Hand-Embroidered Cushion Cover', 'Textile', 30, '40x40 cm', 11, 35.00, 'Approved'), 
+(118, 'Wooden Chess Set', 'Woodworking', 5, '30x30 cm', 43, 85.00, 'Pending'), 
+(119, 'Hand-Painted Ceramic Mug', 'Pottery', 50, '10 oz', 8, 12.00, 'Approved'),
+(120, 'Macrame Plant Hanger', 'Textile', 20, '60 cm long', 22, 20.75, 'Rejected'), 
+(121, 'Leather-Tooled Belt', 'Leatherwork', 15, '100 cm long', 25, 45.00, 'Approved'), 
+(122, 'Hand-Carved Wooden Spoon', 'Woodworking', 50, '25 cm long', 44, 8.50, 'Pending'), 
+(123, 'Crochet Doily', 'Textile', 25, '20 cm diameter', 9, 10.00, 'Approved'), 
+(124, 'Glass Blown Vase', 'Glassblowing', 10, '25 cm tall', 17, 60.00, 'Pending'), 
+(125, 'Hand-Woven Rug', 'Textile', 5, '150x200 cm', 1, 175.00, 'Approved'), 
+(126, 'Recycled Bottle Candle Holder', 'Upcycled', 20, '10 cm tall', 18, 15.25, 'Rejected'),
+(127, 'Hand-Embroidered Wall Art', 'Textile', 10, '40x50 cm', 11, 70.00, 'Approved'), 
+(128, 'Wooden Jewelry Box', 'Woodworking', 15, '20x15x10 cm', 43, 45.50, 'Pending'), 
+(129, 'Hand-Painted Ceramic Plate', 'Pottery', 30, '20 cm diameter', 8, 28.75, 'Approved'),
+(130, 'Macrame Dream Catcher', 'Textile', 15, '30 cm diameter', 22, 35.00, 'Rejected'), 
+(131, 'Leather-Embossed Journal Cover', 'Leatherwork', 25, '20x15 cm', 25, 52.25, 'Approved'), 
+(132, 'Hand-Carved Wooden Animal Figurine', 'Woodworking', 20, '10 cm tall', 44, 18.00, 'Pending'), 
+(133, 'Crochet Scarf', 'Textile', 15, '180 cm long', 9, 22.50, 'Approved'), 
+(134, 'Glass Blown Pendant', 'Glassblowing', 12, '3 cm diameter', 17, 38.75, 'Pending'), 
+(135, 'Hand-Woven Bag', 'Textile', 30, '30x40 cm', 1, 45.00, 'Approved'), 
+(136, 'Recycled Tin Can Planter', 'Upcycled', 25, '15 cm tall', 18, 12.50, 'Rejected'), 
+(137, 'Hand-Embroidered Pillowcase', 'Textile', 40, '50x70 cm', 11, 25.00, 'Approved'),
+(138, 'Wooden Cutting Board', 'Woodworking', 20, '30x20 cm', 43, 32.00, 'Pending'),
+(139, 'Hand-Painted Ceramic Bowl', 'Pottery', 35, '15 cm diameter', 8, 21.25, 'Approved'),
+(140, 'Macrame Keychain', 'Textile', 50, '10 cm long', 22, 8.50, 'Rejected'),	
+(141, 'Leather-Tooled Bookmark', 'Leatherwork', 30, '15x5 cm', 25, 10.75, 'Approved'), 
+(142, 'Hand-Carved Wooden Chess Piece', 'Woodworking', 100, '5 cm tall', 44, 7.50, 'Pending'), 
+(143, 'Crochet Coasters', 'Textile', 20, '10 cm diameter', 9, 5.25, 'Approved'), 
+(144, 'Glass Blown Ornament', 'Glassblowing', 25, '5 cm diameter', 17, 15.00, 'Pending'), 
+(145, 'Hand-Woven Table Runner', 'Textile', 15, '40x120 cm', 1, 37.50, 'Approved'),
+(146, 'Recycled Plastic Bottle Flower Vase', 'Upcycled', 30, '20 cm tall', 18, 18.00, 'Rejected'), 
+(147, 'Hand-Embroidered Tablecloth', 'Textile', 5, '150x250 cm', 11, 120.00, 'Approved'), 
+(148, 'Wooden Photo Frame', 'Woodworking', 30, '10x15 cm', 43, 20.50, 'Pending'), 
+(149, 'Hand-Painted Ceramic Mug', 'Pottery', 50, '12 oz', 8, 12.50, 'Approved'), 
+(150, 'Macrame Wall Hanging', 'Textile', 20, '40x60 cm', 22, 35.00, 'Rejected'), 
+(151, 'Leather-Embossed Phone Case', 'Leatherwork', 40, 'Fits iPhone 12', 25, 28.95, 'Approved'), 
+(152, 'Hand-Carved Wooden Pen', 'Woodworking', 50, '15 cm long', 44, 18.75, 'Pending'),
+(153, 'Crochet Baby Booties', 'Textile', 25, 'Newborn size', 9, 10.50, 'Approved'), 
+(154, 'Glass Blown Paperweight', 'Glassblowing', 15, '5 cm diameter', 17, 22.00, 'Pending'), 
+(155, 'Hand-Woven Tote Bag', 'Textile', 40, '40x50 cm', 1, 38.50, 'Approved'), 
+(156, 'Recycled Cardboard Box Organizer', 'Upcycled', 30, '20x30x15 cm', 18, 15.25, 'Rejected'), 
+(157, 'Hand-Embroidered Apron', 'Textile', 25, 'One size', 11, 24.99, 'Approved')
+(158, 'Wooden Puzzle', 'Woodworking', 10, '20x20 cm', 43, 12.75, 'Pending'), 
+(159, 'Hand-Painted Ceramic Teapot', 'Pottery', 15, '500 ml', 8, 32.00, 'Approved'),
+(160, 'Macrame Plant Hanger', 'Textile', 30, '40 cm long', 22, 21.50, 'Rejected'), 
+(161, 'Leather-Tooled Wallet', 'Leatherwork', 20, '10x15 cm', 25, 45.00, 'Approved'), 
+(162, 'Hand-Carved Wooden Birdhouse', 'Woodworking', 15, '20x15 cm', 44, 16.99, 'Pending'), 
+(163, 'Crochet Hat', 'Textile', 20, 'Adult size', 9, 18.00, 'Approved'),
+(164, 'Glass Blown Bowl', 'Glassblowing', 10, '20 cm diameter', 17, 35.75, 'Pending'), 
+(165, 'Hand-Woven Basket', 'Basketry', 25, '30x40 cm', 3, 29.95, 'Approved'), 
+(166, 'Recycled Plastic Bottle Flower Vase', 'Upcycled', 35, '25 cm tall', 18, 14.50, 'Rejected'), 
+(167, 'Hand-Embroidered Cushion Cover', 'Textile', 35, '45x45 cm', 11, 32.25, 'Approved'), 
+(168, 'Wooden Chess Set', 'Woodworking', 5, '35x35 cm', 43, 85.00, 'Pending'), 
+(169, 'Hand-Painted Ceramic Mug', 'Pottery', 55, '14 oz', 8, 13.25, 'Approved'); 
+	
 insert into supplier_bank_account (supplierid, bank_name, bank_number) values
 (1, 'Vietcombank', '0011223344'), (2, 'Techcombank', '0022334455'), 
 (3, 'VietinBank', '0033445566'), (4, 'Sacombank', '0044556677'), 
@@ -359,9 +475,6 @@ insert into supplier_bank_account (supplierid, bank_name, bank_number) values
 (37, 'Techcombank', '1234567890') ,(42, 'VPBank', '9876543210') ,(39, 'VietinBank', '0123456789') ,
 (35, 'HSBC', '1234567890'),(45, 'MSB', '9876543210');
 
-select * from supplier_bank_account 
-order by supplierid;
-
 insert into orders(order_datetime, customer_id, customer_name, customer_address, customer_phone, order_status, discount) values 
 ('2024-12-22 15:30:15', 77, 'Nguyen Van A', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
 ('2024-12-22 16:15:20', 32, 'Tran Thi B', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
@@ -378,9 +491,7 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('2024-12-22 14:45:30', 77, 'Nguyen Van A', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
 ('2024-12-22 17:00:00', 15, 'Le Thi C', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', 0.025), 
 ('2024-12-22 15:45:45', 88, 'Vo Van D', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Completed', 0.00), 
-('2024-12-22 16:30:25', 32, 'Tran Thi B', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10);
-
-insert into orders(order_datetime, customer_id, customer_name, customer_address, customer_phone, order_status, discount) values
+('2024-12-22 16:30:25', 32, 'Tran Thi B', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.10),
 ('2024-07-15 15:30:15', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
 ('2024-11-21 16:15:20', 2, 'Max McConnachie', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0.00), 
 ('2024-06-08 14:45:30', 1, 'Emilia Dunsford', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.00), 
@@ -596,8 +707,7 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('2024-05-11 16:45:00', 1, 'Emilia Dunsford', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0.075), 
 ('2024-07-03 18:30:00', 38, 'Oates Palin', '456 Hai Ba Trung Street, District 1, Ho Chi Minh City', '0916789012', 'Processing', 0), 
 ('2024-09-21 21:15:00', 70, 'Bucky Labbet', '789 Nguyen Hue Street, District 1, Ho Chi Minh City', '0927890123', 'Processing', 0), 
-('2024-06-08 03:15:00', 71, 'Michele Fellenor', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05) 
- select * from supplier_account
+('2024-06-08 03:15:00', 71, 'Michele Fellenor', '123 Le Thanh Ton Street, District 1, Ho Chi Minh City', '0905678901', 'Completed', 0.05); 
  
  insert into supplier_account(name, address, email, phone, password) values
 ('Artisan Village', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', 'artisanvillage.chusvn', '0901234567', 'artisan123'), 
@@ -644,8 +754,6 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('Wood Toy Maker', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', 'woodtoymaker.chusvn', '0912345678', 'woodtoy123'),
 ('Woodcrafters Inc.', '234 Pasteur Street, District 1, Ho Chi Minh City', 'woodcraftersinc.chusvn', '0923456789', 'woodcraft123'), 
 ('Wooden Wonders', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', 'woodenwonders.chusvn', '0934567890', 'wooden123'),
- insert into supplier_account(name, address, email, phone, password) values
-
 ('Woodworker', '702 Nguyen Van Linh Street, District 7, Ho Chi Minh City', 'woodworker.chusvn', '0284937423', 'woodworker123') ; 
 
 Insert into rejected_item(product_id, reason) values 
@@ -697,8 +805,6 @@ Insert into rejected_item(product_id, reason) values
 (160, "Macrame Plant Hanger: Uneven knots and loose ends, affecting the overall appearance.") ,
 (166, "Recycled Plastic Bottle Flower Vase: Uneven cuts and potential for sharp edges.");
 
-select * from orders;
-
 insert into buy(order_id, product_id, quantity) values 
 (1, 1, 2), (2, 4, 1), (3, 7, 3), (4, 10, 2), (5, 13, 1), 
 (6, 16, 3), (7, 19, 2), (8, 22, 1), (9, 25, 3), (10, 28, 2), 
@@ -735,16 +841,53 @@ insert into buy(order_id, product_id, quantity) values
 (80, 115, 2), (10, 10, 2), (21, 13, 1), (20, 16, 3), (37, 19, 2), (39, 22, 1), 
 (79, 25, 3), (43, 28, 2), (49, 31, 1), (37, 34, 3), (36, 37, 2), (38, 40, 1),
  (34, 43, 3), (29, 46, 2), (24, 49, 1), (39, 52, 3), (40, 55, 2), (39, 58, 1), 
- (35, 61, 3), (39, 64, 2), (57, 67, 1); 
- 
- select * from orders
-  
-insert into buy(order_id, product_id, quantity) values 
-(82, 16, 2), (83, 4, 1), (84, 7, 3), (85, 10, 2), (86, 13, 1), (87, 16, 3), (88, 19, 2), (89, 22, 1), (90, 25, 3), (91, 28, 2), (92, 31, 1), (93, 34, 3), (94, 37, 2), (95, 40, 1), (96, 43, 3), (97, 46, 2), (98, 49, 1), (99, 52, 3), (100, 55, 2), (82, 58, 1), (92, 16, 2), (93, 4, 1), (94, 7, 3), (95, 10, 2), (96, 13, 1), (97, 16, 3), (98, 19, 2), (99, 22, 1), (100, 25, 3), (92, 28, 2), (101, 31, 1), (102, 34, 3), (103, 37, 2), (104, 40, 1), (105, 43, 3), (106, 46, 2), (107, 49, 1), (108, 52, 3), (109, 55, 2), (110, 58, 1), (102, 16, 2), (103, 19, 1), (104, 22, 3), (105, 25, 2), (106, 28, 1), (107, 31, 3), (108, 34, 2), (109, 37, 1), (110, 40, 3), (111, 43, 2), (112, 46, 1), (113, 49, 3), (114, 52, 2), (115, 55, 1), (116, 58, 3), (117, 61, 2), (118, 64, 1), (119, 67, 3), (120, 70, 2), (102, 73, 1), (132, 10, 2), (133, 13, 1), (134, 16, 3), (135, 19, 2), (136, 22, 1), (137, 25, 3), (138, 28, 2), (139, 31, 1), (140, 34, 3), (141, 37, 2), (142, 40, 1), (143, 43, 3), (144, 46, 2), (145, 49, 1), (146, 52, 3), (147, 55, 2), (148, 58, 1), (149, 61, 3), (150, 64, 2), (132, 67, 1), (133, 70, 3), (134, 73, 2), (135, 76, 1), (136, 79, 3), (137, 82, 2), (138, 85, 1), (139, 88, 3), (140, 91, 2), (141, 94, 1), (142, 97, 3), (143, 100, 2), (144, 103, 1), (145, 106, 3), (146, 109, 2), (147, 111, 1), (148, 113, 3), (149, 115, 2), (150, 117, 1), (132, 119, 3), (133, 121, 2), (134, 123, 1), (135, 125, 3), (136, 127, 2), (137, 129, 1), (138, 131, 3), (139, 133, 2), (140, 135, 1), (141, 137, 3), (142, 139, 2), (143, 141, 1), (144, 143, 3), (145, 145, 2), (146, 147, 1), (147, 149, 3), (148, 151, 2), (149, 153, 1), (150, 155, 3), (152, 10, 2), (153, 13, 1), (154, 16, 3), (155, 19, 2), (156, 22, 1), (157, 25, 3), (158, 28, 2), (159, 31, 1), (160, 34, 3), (161, 37, 2), (162, 40, 1), (163, 43, 3), (164, 46, 2), (165, 49, 1), (166, 52, 3), (167, 55, 2), (168, 58, 1), (169, 61, 3), (170, 64, 2), (171, 67, 1), (172, 70, 3), (173, 73, 2), (174, 76, 1), (175, 79, 3), (176, 82, 2), (177, 85, 1), (178, 88, 3), (179, 91, 2), (180, 94, 1), (152, 97, 3), (153, 100, 2), (154, 103, 1), (155, 106, 3), (156, 109, 2), (157, 111, 1), (158, 113, 3), (159, 115, 2), (160, 117, 1), (161, 119, 3), (162, 121, 2), (163, 123, 1), (164, 125, 3), (165, 127, 2), (166, 129, 1), (167, 131, 3), (168, 133, 2), (169, 135, 1), (170, 137, 3), (171, 139, 2), (172, 141, 1), (173, 143, 3), (174, 145, 2), (175, 147, 1), (176, 149, 3), (177, 151, 2), (178, 153, 1), (179, 155, 3), (180, 157, 2), (192, 10, 2), (193, 13, 1), (194, 16, 3), (195, 19, 2), (196, 22, 1), (197, 25, 3), (198, 28, 2), (199, 31, 1), (200, 34, 3), (201, 37, 2), (202, 40, 1), (203, 43, 3), (204, 46, 2), (205, 49, 1), (206, 52, 3), (207, 55, 2), (208, 58, 1), (209, 61, 3), (210, 64, 2), (211, 67, 1), (212, 70, 3), (213, 73, 2), (214, 76, 1), (192, 79, 3), (193, 82, 2), (194, 85, 1), (195, 88, 3), (196, 91, 2), (197, 94, 1), (198, 97, 3), (199, 100, 2), (200, 103, 1), (201, 106, 3), (202, 109, 2), (203, 111, 1), (204, 113, 3), (205, 115, 2), (206, 117, 1), (207, 119, 3), (208, 121, 2), (209, 123, 1), (210, 125, 3), (211, 127, 2), (212, 129, 1), (213, 131, 3), (214, 133, 2), (192, 135, 1), (193, 137, 3), (194, 139, 2), (195, 141, 1), (196, 143, 3), (197, 145, 2), (198, 147, 1), (199, 149, 3), (200, 151, 2), (201, 153, 1), (202, 155, 3), (203, 157, 2), (204, 159, 1), (205, 161, 3), (206, 163, 2), (207, 165, 1), (208, 167, 3), (209, 169, 2), (210, 1, 1), (211, 4, 3), (212, 7, 2), (213, 10, 1), (214, 13, 3), (192, 16, 2), (193, 19, 1), (194, 22, 3), (195, 25, 2), (196, 28, 1), (197, 31, 3), (198, 34, 2), (199, 37, 1), (200, 40, 3), (201, 43, 2), (202, 46, 1), (203, 49, 3), (204, 52, 2), (205, 55, 1), (206, 58, 3), (207, 61, 2), (208, 64, 1), (209, 67, 3), (210, 70, 2), (211, 73, 1), (212, 76, 3), (213, 79, 2), (214, 82, 1), (192, 85, 3), (193, 88, 2), (194, 91, 1), (195, 94, 3), (196, 97, 2), (197, 100, 1), (198, 103, 3), (199, 106, 2), (200, 109, 1), (201, 111, 3), (202, 113, 2), (203, 115, 1), (204, 117, 3), (205, 119, 2), (206, 121, 1), (207, 123, 3), (208, 125, 2), (209, 127, 1), (210, 129, 3), (211, 131, 2), (212, 133, 1), (213, 135, 3), (214, 137, 2), (192, 139, 1), (193, 141, 3), (194, 143, 2), (195, 145, 1), (196, 147, 3), (197, 149, 2), (198, 151, 1), (199, 153, 3), (200, 155, 2), (201, 157, 1), (202, 159, 3), (203, 161, 2), (204, 163, 1), (205, 165, 3), (206, 167, 2), (207, 169, 1), (208, 1, 3), (209, 4, 2), (210, 7, 1), (211, 10, 3), (212, 13, 2), (213, 16, 1), (214, 19, 3), (192, 22, 2); 
- 
- select count(distinct product_id) from product
- where approved_status = "Approved";
- 
+ (35, 61, 3), (39, 64, 2), (57, 67, 1),(82, 16, 2), (83, 4, 1), (84, 7, 3), 
+(85, 10, 2), (86, 13, 1), (87, 16, 3), (88, 19, 2), (89, 22, 1), (90, 25, 3), 
+(91, 28, 2), (92, 31, 1), (93, 34, 3), (94, 37, 2), (95, 40, 1), (96, 43, 3), 
+(97, 46, 2), (98, 49, 1), (99, 52, 3), (100, 55, 2), (82, 58, 1), (92, 16, 2), 
+(93, 4, 1), (94, 7, 3), (95, 10, 2), (96, 13, 1), (97, 16, 3), (98, 19, 2), (99, 22, 1), 
+(100, 25, 3), (92, 28, 2), (101, 31, 1), (102, 34, 3), (103, 37, 2), (104, 40, 1), (105, 43, 3), 
+(106, 46, 2), (107, 49, 1), (108, 52, 3), (109, 55, 2), (110, 58, 1), (102, 16, 2), (103, 19, 1), 
+(104, 22, 3), (105, 25, 2), (106, 28, 1), (107, 31, 3), (108, 34, 2), (109, 37, 1), (110, 40, 3), 
+(111, 43, 2), (112, 46, 1), (113, 49, 3), (114, 52, 2), (115, 55, 1), (116, 58, 3), (117, 61, 2), 
+(118, 64, 1), (119, 67, 3), (120, 70, 2), (102, 73, 1), (132, 10, 2), (133, 13, 1), (134, 16, 3), 
+(135, 19, 2), (136, 22, 1), (137, 25, 3), (138, 28, 2), (139, 31, 1), (140, 34, 3), (141, 37, 2),
+(142, 40, 1), (143, 43, 3), (144, 46, 2), (145, 49, 1), (146, 52, 3), (147, 55, 2), (148, 58, 1), 
+(149, 61, 3), (150, 64, 2), (132, 67, 1), (133, 70, 3), (134, 73, 2), (135, 76, 1), (136, 79, 3), 
+(137, 82, 2), (138, 85, 1), (139, 88, 3), (140, 91, 2), (141, 94, 1), (142, 97, 3), (143, 100, 2), 
+(144, 103, 1), (145, 106, 3), (146, 109, 2), (147, 111, 1), (148, 113, 3), (149, 115, 2), (150, 117, 1), 
+(132, 119, 3), (133, 121, 2), (134, 123, 1), (135, 125, 3), (136, 127, 2), (137, 129, 1), 
+(138, 131, 3), (139, 133, 2), (140, 135, 1), (141, 137, 3), (142, 139, 2), (143, 141, 1), 
+(144, 143, 3), (145, 145, 2), (146, 147, 1), (147, 149, 3), (148, 151, 2), (149, 153, 1), 
+(150, 155, 3), (152, 10, 2), (153, 13, 1), (154, 16, 3), (155, 19, 2), (156, 22, 1), (157, 25, 3), 
+(158, 28, 2), (159, 31, 1), (160, 34, 3), (161, 37, 2), (162, 40, 1), (163, 43, 3), (164, 46, 2), 
+(165, 49, 1), (166, 52, 3), (167, 55, 2), (168, 58, 1), (169, 61, 3), (170, 64, 2), (171, 67, 1), 
+(172, 70, 3), (173, 73, 2), (174, 76, 1), (175, 79, 3), (176, 82, 2), (177, 85, 1), (178, 88, 3), 
+(179, 91, 2), (180, 94, 1), (152, 97, 3), (153, 100, 2), (154, 103, 1), (155, 106, 3), (156, 109, 2), 
+(157, 111, 1), (158, 113, 3), (159, 115, 2), (160, 117, 1), (161, 119, 3), (162, 121, 2), (163, 123, 1), 
+(164, 125, 3), (165, 127, 2), (166, 129, 1), (167, 131, 3), (168, 133, 2), (169, 135, 1), (170, 137, 3),
+(171, 139, 2), (172, 141, 1), (173, 143, 3), (174, 145, 2), (175, 147, 1), (176, 149, 3), (177, 151, 2),
+(178, 153, 1), (179, 155, 3), (180, 157, 2), (192, 10, 2), (193, 13, 1), (194, 16, 3), (195, 19, 2), 
+(196, 22, 1), (197, 25, 3), (198, 28, 2), (199, 31, 1), (200, 34, 3), (201, 37, 2), (202, 40, 1), 
+(203, 43, 3), (204, 46, 2), (205, 49, 1), (206, 52, 3), (207, 55, 2), (208, 58, 1), (209, 61, 3), 
+(210, 64, 2), (211, 67, 1), (212, 70, 3), (213, 73, 2), (214, 76, 1), (192, 79, 3), (193, 82, 2), 
+(194, 85, 1), (195, 88, 3), (196, 91, 2), (197, 94, 1), (198, 97, 3), (199, 100, 2), (200, 103, 1), 
+(201, 106, 3), (202, 109, 2), (203, 111, 1), (204, 113, 3), (205, 115, 2), (206, 117, 1), (207, 119, 3), 
+(208, 121, 2), (209, 123, 1), (210, 125, 3), (211, 127, 2), (212, 129, 1), (213, 131, 3), (214, 133, 2),
+(192, 135, 1), (193, 137, 3), (194, 139, 2), (195, 141, 1), (196, 143, 3), (197, 145, 2), (198, 147, 1), 
+(199, 149, 3), (200, 151, 2), (201, 153, 1), (202, 155, 3), (203, 157, 2), (204, 159, 1), (205, 161, 3),
+(206, 163, 2), (207, 165, 1), (208, 167, 3), (209, 169, 2), (210, 1, 1), (211, 4, 3), (212, 7, 2), 
+(213, 10, 1), (214, 13, 3), (192, 16, 2), (193, 19, 1), (194, 22, 3), (195, 25, 2), (196, 28, 1), 
+(197, 31, 3), (198, 34, 2), (199, 37, 1), (200, 40, 3), (201, 43, 2), (202, 46, 1), (203, 49, 3), 
+(204, 52, 2), (205, 55, 1), (206, 58, 3), (207, 61, 2), (208, 64, 1), (209, 67, 3), (210, 70, 2), 
+(211, 73, 1), (212, 76, 3), (213, 79, 2), (214, 82, 1), (192, 85, 3), (193, 88, 2), (194, 91, 1), 
+(195, 94, 3), (196, 97, 2), (197, 100, 1), (198, 103, 3), (199, 106, 2), (200, 109, 1), (201, 111, 3), 
+(202, 113, 2), (203, 115, 1), (204, 117, 3), (205, 119, 2), (206, 121, 1), (207, 123, 3), (208, 125, 2), 
+(209, 127, 1), (210, 129, 3), (211, 131, 2), (212, 133, 1), (213, 135, 3), (214, 137, 2), (192, 139, 1), 
+(193, 141, 3), (194, 143, 2), (195, 145, 1), (196, 147, 3), (197, 149, 2), (198, 151, 1), (199, 153, 3), 
+(200, 155, 2), (201, 157, 1), (202, 159, 3), (203, 161, 2), (204, 163, 1), (205, 165, 3), (206, 167, 2), 
+(207, 169, 1), (208, 1, 3), (209, 4, 2), (210, 7, 1), (211, 10, 3), (212, 13, 2), (213, 16, 1), (214, 19, 3), (192, 22, 2); 
+
 -- insert the all information of the product, which have been approved, from Product main table to item_on_sale 
 INSERT INTO item_on_sale
 SELECT product_id, product_name, supplier, product_size, category, quantity, unit_price
@@ -757,17 +900,33 @@ where approved_status = "Approved";
 select CB.customerid, name, phone_number, email, bank_name, bank_number number from customer_account C, customer_bank_account CB
 where C.customerid = CB.customerid and email = 'kraspison1m@g.co' and password ='kraspison1m';
 
-select * from customer_account
-select * from customer_bank_account;
-select * from buy
-order by order_id;
-select * from item_on_sale;
+--Since the Oracle Apex doesn't have the datetime and the date format of the app is "month - day - year"
+--This is to query out the all information, changed the datetime format in sql to format of date  "month - day - year"
 select order_id, date_format(order_datetime, "%m-%d-%Y" ) as order_datetime, 
 customer_id, customer_name, customer_address, customer_phone, order_status, discount from orders;
-select * from product;
-select * from rejected_item;
-select * from supplier_account;
-select * from supplier_bank_account;
-
+shorten
+	
+-- This query fetches details about products and their suppliers by joining the product and supplier_account tables where the supplier name matches.
 select product_id, product_name, category, quantity, product_size, supplier_account.supplierid as supplier, unit_price, approved_status from product, supplier_account 
 where product.supplier = supplier_account.name
+	
+--Do the same with this select buy.order_id, product.product_name, buy.quantity, product.unit_price, product.unit_price * buy.quantity as total_price from buy , product where buy.product_id = product.product_id;
+This query retrieves order details, including product name, quantity, unit price, and total price, by joining the buy and product tables where their product IDs match.
+select buy.order_id, product.product_name, buy.quantity, product.unit_price, product.unit_price * buy.quantity as total_price from buy , product  
+where buy.product_id = product.product_id;
+
+
+--This query retrieves order details and calculates the total price before and after discounts by joining the orders and order_info tables on their order IDs. 
+--It also calculated the total price of the order before and after discount.
+--It groups the results by various order attributes, including order ID, datetime, customer details, order status, and discount.
+select orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status,
+sum("order_info".total_price) as total_price_before_discount, orders.discount,
+sum("order_info".total_price) - sum("order_info".total_price) * discount as total_price_after_discount
+from orders, "order_info"
+where orders.order_id = "order_info".order_id
+group by orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status, orders.discount
+
+select orders.customer_id, customer_account.name, count(distinct orders.order_id) as "Number of Order" from customer_account, orders
+where customer_account.customerid = orders.customer_id
+group by orders.customer_id, customer_account.name
+order by "Number of Order" desc
