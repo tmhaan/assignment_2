@@ -432,7 +432,7 @@ Insert into product(product_id, product_name, category, quantity, product_size, 
 (154, 'Glass Blown Paperweight', 'Glassblowing', 15, '5 cm diameter', 17, 22.00, 'Pending'), 
 (155, 'Hand-Woven Tote Bag', 'Textile', 40, '40x50 cm', 1, 38.50, 'Approved'), 
 (156, 'Recycled Cardboard Box Organizer', 'Upcycled', 30, '20x30x15 cm', 18, 15.25, 'Rejected'), 
-(157, 'Hand-Embroidered Apron', 'Textile', 25, 'One size', 11, 24.99, 'Approved')
+(157, 'Hand-Embroidered Apron', 'Textile', 25, 'One size', 11, 24.99, 'Approved'),
 (158, 'Wooden Puzzle', 'Woodworking', 10, '20x20 cm', 43, 12.75, 'Pending'), 
 (159, 'Hand-Painted Ceramic Teapot', 'Pottery', 15, '500 ml', 8, 32.00, 'Approved'),
 (160, 'Macrame Plant Hanger', 'Textile', 30, '40 cm long', 22, 21.50, 'Rejected'), 
