@@ -926,7 +926,8 @@ from orders, "order_info"
 where orders.order_id = "order_info".order_id
 group by orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status, orders.discount
 
-select orders.customer_id, customer_account.name, count(distinct orders.order_id) as "Number of Order" from customer_account, orders
+select orders.customer_id, customer_account.name, count(distinct orders.order_id) as number_of_order from customer_account, orders
 where customer_account.customerid = orders.customer_id
 group by orders.customer_id, customer_account.name
-order by "Number of Order" desc
+order by number_of_order desc
+limit 5;
