@@ -934,7 +934,8 @@ group by orders.customer_id, customer_account.name
 order by number_of_order desc
 limit 5;
 
---To find 
+--This is the long queries to figure out the monthly average order value after discount since 6.2024.
+--It helps to understand the potential growth of the app. 
 with complete_order as 
 (select customer_id, order_id, extract(year from orders.order_datetime) as "year", 
         extract(month from order_datetime) as "month", 
