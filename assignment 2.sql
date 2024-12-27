@@ -108,7 +108,7 @@ Create table orders (
     order_datetime datetime,
     customer_id int(4), 
     customer_name varchar(30), 
-    customer_address varchar(30), 
+    customer_address varchar(100), 
     customer_phone varchar(20), 
     order_status varchar(10),
     discount numeric(10),
