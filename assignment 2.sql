@@ -920,11 +920,13 @@ where buy.product_id = product.product_id;
 --It also calculated the total price of the order before and after discount.
 --It groups the results by various order attributes, including order ID, datetime, customer details, order status, and discount.
 select orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status,
-sum("order_info".total_price) as total_price_before_discount, orders.discount,
-sum("order_info".total_price) - sum("order_info".total_price) * discount as total_price_after_discount
-from orders, "order_info"
-where orders.order_id = "order_info".order_id
+sum(a.total_price) as total_price_before_discount, orders.discount,
+sum(a.total_price) - sum(a.total_price) * discount as total_price_after_discount
+from orders, (select buy.order_id, product.product_name, buy.quantity, product.unit_price, product.unit_price * buy.quantity as total_price from buy , product  
+where buy.product_id = product.product_id)a
+where orders.order_id = a.order_id
 group by orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status, orders.discount
+
 
 select orders.customer_id, customer_account.name, count(distinct orders.order_id) as number_of_order from customer_account, orders
 where customer_account.customerid = orders.customer_id
