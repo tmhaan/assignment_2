@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS product;
 
 --create the table including all customer account with the customer id as the primary key, which is not null and unique.
 CREATE TABLE customer_account (
-  customerid numeric(4) auto_increment,
+  customerid int(4) auto_increment,
   name VARCHAR(50) NOT NULL,
   phone_number varchar(30) NOT NULL, 
   email varchar(50) not null, 
@@ -24,7 +24,7 @@ CREATE TABLE customer_account (
 --This allow user to have 1 or more bank accounts
 --No primary key, but the customer id is the foreign key. 
 CREATE TABLE customer_bank_account (
-  customerid numeric(4) ,
+  customerid int(4) ,
   bank_name VARCHAR(50) NOT NULL,
   bank_number VARCHAR(20) not null,
   --
@@ -34,7 +34,7 @@ CREATE TABLE customer_bank_account (
     
 --create the table including all supplier account with the supplier id as the primary key, which is not null and unique.
 Create table supplier_account (
-	supplierid numeric(4) auto_increment,
+	supplierid int(4) auto_increment,
     name varchar(50),
     phone varchar(30),
     address varchar(100),
@@ -60,7 +60,7 @@ create table supplier_bank_account(
 --primary key is product id
 --This is the table show the approval status: "Pending", "Approved", "Rejected"
 create table product (
-	product_id numeric, 
+	product_id intint, 
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
@@ -78,7 +78,7 @@ CONSTRAINT fk_product_supplier FOREIGN KEY (supplier) REFERENCES supplier_accoun
 
 --When the product is approved, it will automatically appeared to be on sale.
 Create table item_on_sale(
-	product_id numeric,
+	product_id intint,
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
@@ -927,9 +927,29 @@ where buy.product_id = product.product_id)a
 where orders.order_id = a.order_id
 group by orders.order_id, orders.order_datetime, orders.customer_id, orders.customer_name, orders.customer_address, orders.customer_phone, orders.order_status, orders.discount
 
-
+--Top 5 customer who have the highest orders
 select orders.customer_id, customer_account.name, count(distinct orders.order_id) as number_of_order from customer_account, orders
 where customer_account.customerid = orders.customer_id
 group by orders.customer_id, customer_account.name
 order by number_of_order desc
 limit 5;
+
+--To find 
+with complete_order as 
+(select customer_id, order_id, extract(year from orders.order_datetime) as "year", 
+        extract(month from order_datetime) as "month", 
+        date_format(order_datetime,'%m-%Y') as complete_date 
+        from orders
+where order_status = 'Completed' and extract(month from order_datetime) >6), 
+
+total_price as 
+(select buy.order_id, product.product_name, buy.quantity, product.unit_price, product.unit_price * buy.quantity as total_price from buy , product  
+where buy.product_id = product.product_id)
+
+select  complete_date as date, 
+        count(distinct o.customer_id) as total_user,
+        round((sum(p.total_price)/count(distinct o.order_id)),2) as average_order_value 
+        from complete_order o, total_price p
+where o.order_id = p.order_id
+group by complete_date, month, year
+order by year, month;
