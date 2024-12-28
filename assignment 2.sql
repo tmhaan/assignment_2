@@ -60,7 +60,7 @@ create table supplier_bank_account(
 --primary key is product id
 --This is the table show the approval status: "Pending", "Approved", "Rejected"
 create table product (
-	product_id intint, 
+	product_id int, 
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
@@ -78,7 +78,7 @@ CONSTRAINT fk_product_supplier FOREIGN KEY (supplier) REFERENCES supplier_accoun
 
 --When the product is approved, it will automatically appeared to be on sale.
 Create table item_on_sale(
-	product_id intint,
+	product_id int,
     product_name varchar(50), 
     category varchar(20),
     quantity numeric(3), 
