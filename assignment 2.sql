@@ -543,9 +543,7 @@ insert into orders(order_datetime, customer_id, customer_name, customer_address,
 ('2024-02-14 14:45:30', 17, 'Flss Brass', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', '0.00'), 
 ('2024-09-08 17:00:00', 70, 'Bucky Labbet', '234 Pasteur Street, District 1, Ho Chi Minh City', '0923456789', 'Processing', '0.025'), 
 ('2024-04-25 15:00:10', 71, 'Michele Fellenor', '456 Cong Quynh Street, District 1, Ho Chi Minh City', '0956789012', 'Completed', '0.00'),  
-('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', '0.03');  
-
-insert into orders(order_datetime, customer_id, customer_name, customer_address, customer_phone, order_status, discount) values 
+('2024-10-17 16:45:35', 72, 'Leicester Peracco', '789 Tran Hung Dao Street, District 5, Ho Chi Minh City', '0934567890', 'Processing', '0.03'),
 ('2024-06-01 15:30:15', 73, 'Tallie Bainton', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0.05), 
 ('2024-12-10 16:15:20', 74, 'Robenia Durbin', '567 Vo Van Tan Street, District 3, Ho Chi Minh City', '0912345678', 'Processing', 0), 
 ('2024-12-22 14:45:30', 60, 'Boy Eaglesham', '123 Nguyen Trai Street, District 1, Ho Chi Minh City', '0901234567', 'Completed', 0), 
